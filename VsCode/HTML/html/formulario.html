@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+        <fieldset>
+            <legend>Datos Personales</legend>
+        
+        <table>
+            <tr>
+                <td>Nombre:</td>
+                <td>Apellidos:</td>
+                <td>DNI</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="nombre"></td>
+                <td><input type="text" name="apellidos"></td>
+                <td><input type="text" name="DNI"></td>
+            </tr>
+            <tr>
+                <td>Localidad de nacimiento:</td>
+                <td>Provincia</td>
+                <td>Fecha Nacimiento</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="localidad"></td>
+                <td><select name="localidad">
+                    <option value="Madrid">Madrid</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Huelva">Huelva</option>
+                </select>
+                </td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td colspan="2">Direccion</td>
+                <td>Codigo Postal:</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>Forma de Acceso</legend>
+        <ul type="none">
+            <li><input type="radio" name="n1">Directo
+                <ul type="none">
+                    <li><input type="radio" name="n2">Bachillerato Log Modalidad
+                    <input type="text">
+                    </li>
+                    <li><input type="radio" name="n2">Experimental</li>
+                    <li><input type="radio" name="n2">COU Opción
+                    <input type="text">
+                    </li>
+                    <li><input type="radio" name="n2">FP2</li>
+                    <li><input type="radio" name="n2">Otros(especifique)
+                    <input type="text">
+                    </li>
+                </ul>
+            </li>
+            <li><input type="radio" name="n1" >Prueba Libre</li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>Documentos adjuntos</legend>
+        <table>
+            <tr>
+                <td><input type="checkbox">Fotocopia DNI</td>
+                <td><input type="checkbox">Certificado Academico</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox">Otros documentos(especifique)
+                <input type="text">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <input type="submit" value="Enviar Solicitud">
+    </form>
+
+    
+</body>
+</html>

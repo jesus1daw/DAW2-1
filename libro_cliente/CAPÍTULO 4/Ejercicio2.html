@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>Validando la información</title>
+</head>
+<body>
+   <input type="text" placeholder="Nombre" id="nombre" ><span id="Adnombre"></span>
+   <br/><br/>
+   <input type="text" placeholder="Apellido" id="apellido" ><span id="Adapellido"></span>
+   <br/><br/>
+   <button type="submit" onclick="validar();" id="boton">Validar</button>
+
+<script>
+   function validar(){
+       valor = document.getElementById("nombre").value;
+       if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+           document.getElementById("Adnombre").innerHTML = "*Introduzca un nombre*";
+       }else{
+           document.getElementById("Adnombre").innerHTML = "*Esta correcto*";
+       }
+       valor = document.getElementById("apellido").value;
+       if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+           document.getElementById("Adapellido").innerHTML = "*Introduzca un apellido*";
+       }else{
+           document.getElementById("Adapellido").innerHTML = "*Esta correcto*";
+       }
+   }
+
+</script>
+</body>
+</html>

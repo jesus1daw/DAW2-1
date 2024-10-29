@@ -1,0 +1,19 @@
+
+.padre{
+    background-color: aqua;
+    width: 800px;
+    height: 800px;
+    text-align: center;
+    
+}
+
+
+.hijo {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    
+}

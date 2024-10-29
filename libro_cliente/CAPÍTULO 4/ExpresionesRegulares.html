@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Expresiones regulares</title>
+ </head>
+ <body>
+
+   <script>
+
+
+ var cadena = "Sintesis1@sintesis.com";
+ var patron = /\w/g; // \w selecciona los caracteres de una cadena de caracteres
+ var resultado = cadena.match(patron);
+ //devuelve un array de palabras y números sin otros símbolos
+ //['S','i','n','t','e','s','i','s','1','s','i','n','t','e','s','i','s','c','o','m']
+ console.log(resultado);
+
+ var patron = /\d/g; // \d selecciona los dígitos de una cadena de caracteres
+ var resultado = cadena.match(patron);
+ //devuelve un array con los dígitos
+ //['1']
+ console.log(resultado);
+
+ var patron = /\W/g; // \W selecciona los NO caracteres de una cadena de caracteres
+ var resultado = cadena.match(patron);
+ //devuelve un array con los no caracteres
+ //['@','.']
+ console.log(resultado);
+
+ var cadena = "Aprende JavaScript en Sintesis";
+ var patron = /\S/g; // \S elimina los espacios de una cadena de caracteres
+ var resultado = cadena.match(patron);
+ //devuelve un array de los elementos del string sin espacios en blanco
+ //['A','p','r','e','n','d','e','J','a','v','a','S','c','r','i','p','t','e','n','S','i','n','t','e','s','i','s']
+ console.log(resultado);
+
+ var patron = /r+/g; // r+ busca si en la cadena tiene una o más erres.
+ var resultado = cadena.match(patron);
+ //devuelve un array de los elementos encontrados
+ //['r','r']
+ console.log(resultado);
+
+ var cadena = "Ponte a 100 o a 1000 con Sintesis";
+ var patron = /\d{2}/g; // busca si hay una secuencia de dos dígitos
+ var resultado = cadena.match(patron);
+ //devuelve un array de las secuencias encontradas
+ //['10','10','00']
+ console.log(resultado);
+
+ var patron = /\d{2,3}/g; // busca si hay una secuencia de dos o tres dígitos
+ var resultado = cadena.match(patron);
+ //devuelve un array de las secuencias encontradas
+ //['100','100']
+ console.log(resultado);
+    </script>
+
+ </body>
+</html>

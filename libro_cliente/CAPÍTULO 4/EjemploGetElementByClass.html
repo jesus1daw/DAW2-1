@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p class="parrafo">Primer p&aacute;rrafo.</p>
+
+<p class="parrafo">Segundo p&aacute;rrafo.</p>
+
+<button onclick="dale()">Cambia el texto</button>
+
+<script>
+function dale() {
+ var p = document.getElementsByClassName("parrafo");
+ p[0].innerHTML = "P&aacute;rrafo primero.";
+ p[1].innerHTML = "P&aacute;rrafo segundo.";
+}
+</script>
+
+</body>
+</html>

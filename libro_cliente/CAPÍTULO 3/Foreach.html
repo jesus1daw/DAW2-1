@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="diasDeLaSemana">Aquí aparecerán los días de la semana:<br></p>
+
+<script>
+textoDias = document.getElementById("diasDeLaSemana");
+var dias = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
+
+function myFunction(item, index) {
+textoDias.innerHTML = textoDias.innerHTML + "index[" + index + "]: " + item + "<br>";
+}
+</script>
+
+<button onclick="dias.forEach(myFunction)">Dale!</button>
+
+</body>

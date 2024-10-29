@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+ <title>Nueva versión del rombo</title>
+</head>
+
+<body>
+
+ <input type="text" id="texto" value="0" placeholder="Filas..." />
+ <input type="button" id="btn" value="Adelante..." onclick="filas()" />
+
+ <div id="caja"></div>
+
+ <script>
+
+   function filas() {
+
+     document.getElementById("caja").innerHTML = "";
+     var limite = document.getElementById("texto").value;
+
+     var resultado = "";
+
+     var espacioHTML = '&nbsp;';
+     var asterisco = "*";
+
+
+     var media = Math.round(limite / 2);
+
+     //Formula para generar los espacios...
+     var ext = espacioHTML.repeat(media + media - 1) + asterisco + espacioHTML.repeat(media + media - 1);
+     var ext2 = espacioHTML.repeat(media + media) + asterisco + espacioHTML.repeat(media + media);
+
+     //Hacia abajo
+     for (var i = 0; i < limite; i++) {
+       if (i == 0) {
+
+         if (limite < 10) {
+           resultado = ext;
+         } else {
+           resultado = ext2;
+         }
+
+       } else {
+         resultado = "";
+         resultado += espacioHTML.repeat(limite - 1 - i);
+         resultado += asterisco;
+         resultado += espacioHTML.repeat(i + i);
+         resultado += asterisco;
+         resultado += espacioHTML.repeat(limite - 1 - i);
+       }
+
+       document.getElementById("caja").innerHTML += resultado + "<br/>";
+     }
+     //Hacia arriba
+     for (var i = limite - 1; i >= 0; i--) {
+       if (i == 0) {
+
+         if (limite < 10) {
+           resultado = ext;
+         } else {
+           resultado = ext2;
+         }
+
+       } else {
+         resultado = "";
+         resultado += espacioHTML.repeat(limite - 1 - i);
+         resultado += asterisco;
+         resultado += espacioHTML.repeat(i + i);
+         resultado += asterisco;
+         resultado += espacioHTML.repeat(limite - 1 - i);
+       }
+
+       document.getElementById("caja").innerHTML += resultado + "<br/>";
+
+     }
+   }
+
+ </script>
+
+</body>
+
+</html>

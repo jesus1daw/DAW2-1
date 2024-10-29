@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="myFPtext">texto a modificar</p>
+<button id="myFPboton">Dale fuerte!</button>
+
+<script>
+
+function dale(){
+var x = document.getElementById("myFPtext");
+x.innerHTML = "hola";
+}
+
+document.getElementById("myFPboton").addEventListener("click", dale, false);
+
+</script>
+
+</body>
+</html>

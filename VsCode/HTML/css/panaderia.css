@@ -1,0 +1,170 @@
+body{
+    margin: 0;
+}
+
+.bar{
+    background-color: #b6851aab ;
+    height: 100px;
+    width: 1903px;
+    margin: 0px;
+    display: flex;
+    box-sizing: border-box;
+    border: solid black 1px;
+    
+}
+.logo{
+    width: 576px;
+
+}
+
+.logo img{
+    width: 400px;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    mix-blend-mode: screen;
+    
+    
+}
+
+.secc{
+    width: 750px;
+    box-sizing: border-box;
+    height: 50px;
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    align-items: center;
+    
+       
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.inicio a{
+
+    background-color: white;
+    border-radius: 10px;
+    
+    font-size: 30px;
+    padding: 4px;
+}
+
+.pan a{
+
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 4px;
+    
+}
+
+.boll a{
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 4px;
+    
+
+
+}
+
+.emp a{
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 4px;
+
+}
+
+.proc a {
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 4px;
+}
+
+.sobre a{
+    font-size: 25px;
+    margin-left: 15px;
+    padding: 4px;
+    
+}
+
+.extra{
+    width: 585px;
+    
+    display: flex;
+    align-items: center;
+
+}
+
+.extra img[alt="flag"]{
+   
+    width: 25px;
+    height: 25px;
+    margin-left: 470px;
+
+
+}
+
+.extra img[alt="bag"]{
+   
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    
+}
+.fondo{
+    height:811px;
+}
+
+.titulo{
+    display: inline-block;
+    margin-left: 374px;
+    margin-top: 240px;
+}
+.titulo p{
+    font-family: "Puppies Play", cursive;
+    background: linear-gradient(to right, #FFDA7B, #605741); /* Gradiente de rojo a amarillo */
+    -webkit-background-clip: text; /* Clipa el fondo al texto (Chrome/Safari) */
+    -webkit-text-fill-color: transparent;
+    line-height: 0.6; /* Ajusta el interlineado si es necesario */
+    
+    
+    font-size: 190px;
+    margin: 0;
+    z-index: 1;
+    height: 150px;
+    box-sizing: border-box;
+}
+
+.fondo img{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 911px;
+    width: 1903px;
+    
+    
+
+}
+
+.inter1 {
+    height: 100px; 
+    width: 1903px;
+    background-color:#8C7E5F;
+    border: solid black 1px;
+    box-sizing: border-box;
+    
+    
+
+}
+
+
+
+
+
+
+
+

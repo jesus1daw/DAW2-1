@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Pulsa el bot&oacute;n para
+ <input type="button" value="a&ntilde;adir" onclick="aniade();"/>
+ o
+ <input type="button" value="eliminar" onclick="elimina();"/>
+ un elemento a la lista.
+</p>
+  <ol id="lista">
+    <li>primer dato</li>
+    <li>segundo dato</li>
+    <li>tercer dato</li>
+    <li>cuarto dato</li>
+  </ol>
+
+<script>
+
+function aniade(){
+
+  do{
+    var palabras = prompt('Introduce el texto que quieras.');
+  }while (palabras == "");
+
+  // Si ha pulsado cancelar no ejecutará el siguiente código
+  if (palabras != null){
+    var elemento = document.createElement('li');
+    var texto = document.createTextNode(palabras);
+    var lista = document.getElementById('lista');
+
+    // con esto creamos el nodo li y el texto.
+    elemento.appendChild(texto);
+    lista.appendChild(elemento);
+  }
+}
+
+function elimina(){
+ var lista = document.getElementById('lista');
+
+ if(lista.children.length > 1){
+   var elemento = lista.children[lista.children.length -1];
+   //Si es par borro el último.
+   if(lista.children.length % 2 == 0){
+     elemento.parentNode.removeChild(elemento);
+   }else{
+     // si no es par tengo que borrar el anterior
+     elemento = lista.children[lista.children.length -2];
+     elemento.parentNode.removeChild(elemento);
+   }
+ }else{
+   alert("No hay elementos a borrar");
+ }
+
+}
+</script>
+</body>
+</html>

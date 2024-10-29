@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Bulling</title>
+   <meta charset="utf-8">
+ </head>
+<body>
+
+<form id="frm1">
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>1.</strong> ¿Se han burlado de ti alguna vez, por tu color de piel, ideas, forma de vestir, de hablar; cuando estás en el colegio? </ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>2.</strong>¿Han realizado comentarios negativos sobre tu inteligencia o competencia? </ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>3.</strong> ¿Han ignorado tus aportaciones y piensas que tus compañeros no respetan tus derechos? </ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>4.</strong> ¿Te han excluido de juegos y/o grupos de amigos en tú colegio?</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>5.</strong> ¿Se han marchado con rapidez de un lugar cuando tú has entrado o llegado?</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>6.</strong>¿Has sido victima de agresiones?</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>7.</strong> ¿Crees que sufres depresion?</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>8.</strong> ¿Sientes ansiedad?</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>9.</strong>Tienes menos de 18 años</ol>
+
+ <ol>
+ <input type="checkbox" name="nomo" >
+ <strong>10.</strong>¿Podrias decir que sientes miedo?</ol>
+ <br><br>
+</form>
+
+<p>Recuerda marcar todas las cuestiones arriba expuestas que creas que siempre realizas.</p>
+
+<button onclick="myFunction()">Comprueba si sufres Bulling</button>
+
+ <h3><p id="resultado"></p></h3>
+ <h4><p id="consejo"></p></h4>
+
+<script>
+
+ function myFunction() {
+
+   var cont=0
+   var x = document.forms["frm1"];
+   var text = "";
+   var i;
+
+   for (i = 0; i < x.length ;i++) {
+     if (x.elements[i].checked){
+       cont++;
+     }
+   }
+
+   document.getElementById("resultado").innerHTML = "Resultado: En principio no tienes nada de que preocuparte.";
+   document.getElementById("consejo").innerHTML = "Resultado: En principio no tienes nada de que preocuparte.";
+
+   if (cont>5){
+   document.getElementById("resultado").innerHTML = "Resultado: Empiezas a tener signos de sufrir Bulling ";
+   document.getElementById("consejo").innerHTML =" Consejo: Hazte valer en tu colegia o lugar de trabajo";
+   }
+
+   if (cont>6){
+   document.getElementById("resultado").innerHTML = "Resultado: Sufres bulling. ";
+   document.getElementById("consejo").innerHTML = "Consejo: Deberias pedir ayuda, proferores o jefes podrian ayudarte en este momento";
+   }
+
+   if (cont>8){
+   document.getElementById("resultado").innerHTML = "Resultado: Bulling preocupante y agresivo ";
+   document.getElementById("consejo").innerHTML = "Consejo: Contacta con un profesional";
+   }
+
+ }
+</script>
+
+</body>
+</html>

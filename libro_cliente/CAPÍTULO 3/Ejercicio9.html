@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Ejercicio búsqueda en arrays</title>
+ </head>
+ <body>
+
+   <input type="text" id="texto"/>
+   <input type="button" id="btn" onclick="muestra()" value="Buscar" minlength="1" />
+
+   <p id="respuesta"></p>
+
+   <script>
+
+     function muestra(){
+
+       var array = ["28924;Estepona", "29240;Valle", "29692;Sabinillas"];
+       var texto = document.getElementById("texto").value;
+       var parrafo = document.getElementById("respuesta");
+
+       if(texto.length <= 0){
+         respuesta.innerHTML = "Introduzca algo";
+       }else
+       texto = texto.toUpperCase();
+       for (let i = 0; i < array.length; i++) {
+
+         if(array[i].toUpperCase().indexOf(texto) !== -1){
+
+           respuesta.innerHTML = array[i];
+           break;
+
+         }else{
+           respuesta.innerHTML = "No encontrado";
+         }
+       }
+     }
+
+   </script>
+
+ </body>
+</html>

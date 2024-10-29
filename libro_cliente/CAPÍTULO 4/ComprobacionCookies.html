@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body onload="miraCookies()">
+<p id="muestracookies"></p>
+<script>
+function miraCookies() {
+   var text = "";
+   if (navigator.cookieEnabled == true) {
+       text = "Las cookies están habilitadas.";
+   } else {
+       text = "Las cookies están deshabilitadas.";
+   }
+   document.getElementById("muestracookies").innerHTML = text;
+}
+</script>
+</body>
+</html>

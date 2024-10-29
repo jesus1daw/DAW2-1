@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <input type="text" name="nombre" id="nombre">
+    <button id="ver">Ver</button>
+    <script>
+
+        document.getElementById("ver").addEventListener("click", ver);
+
+        function ver() {
+            document.cookie="usuario=Pepito;expires=Sat, 12 Dec 2020 12:15:00 GMT";
+            var valor = document.getElementById("nombre").value;
+            checkCookie(valor);
+        }
+
+   function getCookie(param) {
+      var nombre = param + "=";
+      var galletita = decodeURIComponent(document.cookie);
+      var token = galletita.split(';');
+      for(var i = 0; i < token.length; i++) {
+        var caracter = token[i];
+        while (caracter.charAt(0) == ' ') {
+          caracter = caracter.substring(1);
+        }
+        if (caracter.indexOf(nombre) == 0) {
+          return caracter.substring(nombre.length, caracter.length);
+        }
+      }
+      return "";
+   }
+
+   function checkCookie(param) {
+     	 var valor = getCookie(param);
+     	 if (valor != "") {
+     	   alert("Encontrado");
+     	 } else {
+     	   alert("No encontrado");
+ 		 }
+   }
+
+    </script>
+</body>
+</html>

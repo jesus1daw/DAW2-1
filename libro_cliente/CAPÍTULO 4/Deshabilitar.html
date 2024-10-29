@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>Habilitar y desabilitar elementos del DOM</title>
+</head>
+<body>
+   <input type="submit" value="Boton1">
+   <input type="submit" value="Boton2">
+   <input type="submit" value="Boton3">
+   <input type="submit" value="Boton4">
+   <input type="submit" value="Boton5">
+   <br/><br/>
+   <button type="submit" onclick="bloquear();" id="boton">Desactivar todos</button>
+
+<script>
+   function bloquear(){
+       var elementos = document.getElementsByTagName('input');
+       if (elementos[0].className != 'desactivo'){
+           for (var i = 0; i < elementos.length; i++) {
+               elementos[i].disabled = true;
+               elementos[i].className = 'desactivo';
+           }
+           document.getElementById('boton').innerHTML = "Activar todos";
+
+       }else{
+           for (var i = 0; i < elementos.length; i++) {
+               elementos[i].disabled = false;
+               elementos[i].className = 'activo';
+           }
+           document.getElementById('boton').innerHTML = "Desactivar todos";
+       }
+   }
+
+</script>
+</body>
+</html>

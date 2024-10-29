@@ -1,0 +1,39 @@
+<html>
+<head>
+ <title>Mostrando los mensajes de navidad (pero no fiesta)</title>
+</head>
+<body>
+
+<ul>
+
+</ul>
+
+<script>
+
+ var list = document.querySelector('ul');
+
+ var saludos = ['¡Feliz cumpleaños!',
+ 'Feliz navidades a todos',
+ 'Te deseo una feliz navidad',
+ 'En Navidades nos vamos de fiesta',
+ 'Pasa un buen fin de semana'];
+
+ for(var i = 0; i < saludos.length; i++) {
+
+   var input = saludos[i];
+
+   if(input.toUpperCase().indexOf('NAVIDAD') != -1 && input.toUpperCase().indexOf('FIESTA') == -1) {
+
+     var result = input;
+     var listItem = document.createElement('li');
+     var text = document.createTextNode(result);
+
+     listItem.appendChild(text);
+     list.appendChild(listItem);
+
+   }
+ }
+
+</script>
+</body>
+</html>

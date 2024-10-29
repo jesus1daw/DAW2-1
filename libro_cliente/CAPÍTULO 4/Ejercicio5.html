@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Ejercicio expresiones regulares</title>
+</head>
+<body>
+ <input type="button" id="btn" value="Comprobar expresi&oacute;n regular..." onclick="comprobar()" />
+ <script>
+   //Sustituye la palabra android por Linux.
+   function comprobar() {
+     var str = "El sistema operativo más seguro es Android";
+     var res = str.replace(/android/i, "Linux");
+     alert(res);
+   }
+ </script>
+</body>
+</html>

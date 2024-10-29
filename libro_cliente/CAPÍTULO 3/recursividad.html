@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+ <head><title>Ejemplo de recursividad</title></head>
+ <body>
+   <script>
+     function factorial(num){
+       if(num == 0){
+         return 1;
+       }else{
+         return (num * factorial(num -1));
+       }
+     }
+     var numero = factorial(10);
+     document.write(numero);
+   </script>
+ </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Ejercicio arrays</title>
+ </head>
+ <body>
+
+   <script>
+
+     var perrillos = ["Rambo","Rocky","Bella","Gala"];
+     console.log(perrillos.toString());
+
+     var ciudades = 'Móstoles,Alcorcón,Navas del Marqués,Porcuna,Getafe';
+     console.log(ciudades.toString());
+
+     //De esta forma con concat() y haciendo split() hacemos que el array contenga todos los elementos
+     var todos = perrillos.concat(ciudades.split(","));
+
+     //Benito debe saber que unshift sirve para añadir un elemento al inicio del array.
+     todos.unshift('Estepona');
+     console.log("todos: "+todos.toString());
+
+     //Algoritmo para eliminar cualquier elemento que contenga una C...
+     var i=0;
+     var j=0;
+     var nuevos=[];
+     while(i < todos.length) {
+       if(todos[i].indexOf('c') == -1){
+         nuevos[j]=todos[i];
+         j+=1;
+       }
+       i+=1;
+     }
+     console.log(nuevos.toString());
+
+   </script>
+
+ </body>
+</html>

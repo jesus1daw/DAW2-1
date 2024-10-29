@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Utilización del objeto localStorage</title>
+</head>
+
+<body>
+
+ <script>
+
+   var date = new Date();
+
+   if(date.getHours() == 23 && date.getMinutes() == 59)
+     localStorage.removeItem("usuario_diario");
+
+   if(!localStorage.getItem("usuario_permanente"))
+     document.write("Es la primera vez que te conectas<br/>");
+   else
+     document.write("Ya te habias conectado antes<br/>");
+
+   localStorage.setItem("usuario_permanente", "Sintesis");
+
+   if(!localStorage.getItem("usuario_diario"))
+     document.write("Es la primera vez que te conectas hoy<br/>");
+   else
+     document.write("Ya te habias conectado hoy<br/>");
+
+   localStorage.setItem("usuario_diario", "Juan Carlos");
+
+   function borrar(){
+     localStorage.removeItem("usuario_diario");
+     localStorage.removeItem("usuario_permanente");
+   }
+ </script>
+
+ <button onclick=borrar()>Limpiar local Storage</button>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ <head><title> Ejercicio expresiones regulares en búsquedas</title></head>
+ <body>
+   <script>
+   var str = "Aprende javaScript de 10 en Síntesis";
+     //Busca la combinacion de letras S y t sin importar mayúsculas o minúsculas...
+     var m = str.search(/[S|t]/i);
+     console.log(m); // devuelve 12
+     //Busca cualquier digito entre 0 y 9...
+     var n = str.search(/[0-9]/i);
+     console.log(n); //devuelve 22
+     //Busca uno o más ceros...
+     var a = str.search(/0+/i);
+     console.log(a); //devuelve 23
+   </script>
+ </body>
+</html>

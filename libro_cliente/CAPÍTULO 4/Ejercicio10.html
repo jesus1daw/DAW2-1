@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="unboton">Eventos</button>
+    <p id="texto"></p>
+    <button id="unboton2">Eliminar eventos</button>
+    <script>
+        function MuestraFecha() {
+            document.getElementById("unboton").removeEventListener("mouseover", MuestraHola);
+            document.getElementById("unboton").removeEventListener("mouseout", MuestraQuitado);
+        }
+
+        function MuestraHola() {
+            document.getElementById("texto").innerHTML = "Hola que tal";
+        }
+
+   function MuestraQuitado() {
+            document.getElementById("texto").innerHTML = "Te has ido";
+        }
+   function MuestraClick() {
+            document.getElementById("texto").innerHTML = "Has hecho click";
+        }
+
+    </script>
+
+    <p id="texto"></p>
+
+    <script>
+ document.getElementById("unboton2").addEventListener("click", MuestraFecha);
+ document.getElementById("unboton").addEventListener("click", MuestraClick);
+        document.getElementById("unboton").addEventListener("mouseover", MuestraHola);
+        document.getElementById("unboton").addEventListener("mouseout", MuestraQuitado);
+    </script>
+</body>
+</html>

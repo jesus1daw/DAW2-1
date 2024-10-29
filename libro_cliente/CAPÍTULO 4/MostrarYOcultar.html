@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>Ocultando y mostrando texto</title>
+   <style>
+   .oculto {
+     visibility: hidden;
+   }
+   .visible {
+     visibility: visible;
+   }
+   </style>
+</head>
+<body>
+ <p id="parrafo1"> Este es el primer párrafo</p>
+ <p id="parrafo2"> Este es el segundo párrafo</p>
+
+ <button type="submit" onclick="ocultar('parrafo1');">Ocultar/mostrar</button>
+ <button type="submit" onclick="ocultar('parrafo2');">Ocultar/mostrar</button>
+
+<script>
+    function ocultar(parrafo){
+        var elemento = document.getElementById(parrafo);
+        if (elemento.className != 'oculto'){
+            elemento.className = 'oculto';
+     		// también funcionaría la siguiente línea pero se ha preferido modificar el estilo CSS
+            //elemento.style.visibility = 'hidden';
+
+        }else{
+            elemento.className = 'visible';
+            // también funcionaría la siguiente línea pero se ha preferido modificar el estilo CSS
+     //elemento.style.visibility = 'visible';
+        }
+    }
+
+</script>
+</body>
+</html>

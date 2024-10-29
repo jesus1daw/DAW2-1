@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Ejercicio 12.3</title>
+ </head>
+ <body>
+
+   <script>
+     var milista = ['panadero', 456, [0, 1, 2]];
+
+     //Efectivamente puede usar esta posicion ya que en JavaScript los array no discriminan por tipo su contenido.
+     document.write(milista[2][2]);
+
+     //Los mostramos todos con...
+     for (let i = 0; i < milista.length; i++) {
+
+       if(typeof milista[i] == 'object'){
+         for (let j = 0; j < milista[i].length; j++) {
+           document.write(milista[i][j]);
+         }
+       }else{
+         document.write(milista[i]);
+       }
+     }
+
+   </script>
+
+ </body>
+</html>
