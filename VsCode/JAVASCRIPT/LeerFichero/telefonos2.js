@@ -24,13 +24,10 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     mostrarContenido(contenido);
 
 
-   
     const lineas = contenido.split('\r\n');
 
     sinDuplicados=new Set(lineas);
     sinDuplicados.delete("");
-
-   
 
 
     console.log(sinDuplicados);

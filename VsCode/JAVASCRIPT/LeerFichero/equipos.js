@@ -24,18 +24,58 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     mostrarContenido(contenido);
 
 
-   
     const lineas = contenido.split('\r\n');
 
     sinDuplicados=new Set(lineas);
     sinDuplicados.delete("");
-
-   
+    arraySin=[...sinDuplicados];
 
 
     console.log(sinDuplicados);
-    console.log(lineas);
-    console.log(contenido);
+    
+   
+    arrayM=[];
+    arrayF=[];
+    arrayA=[];
+    arrayB=[];
+    arrayC=[];
+
+    arraySin.forEach(lineaSin => {
+        arrayLinea=lineaSin.split(";");
+        if(arrayLinea[1]=="M"){
+            arrayM.push(
+                arrayLinea);
+
+        } else if(arrayLinea[1]=="F"){
+            arrayF.push(arrayLinea);
+        }
+        if(arrayLinea[4]=="A"){
+            arrayA.push(arrayLinea);
+
+        } else if(arrayLinea[4]=="B"){
+            arrayB.push(arrayLinea);
+        
+        } else if(arrayLinea[4]=="C"){
+            arrayC.push(arrayLinea);
+        }
+        
+    });
+
+
+    arrayA.forEach(linea => {
+        //arrayLinea=linea.split(";");
+        if(arrayLinea[1]=="F"){
+            arrayA.pop(linea);
+        }
+
+
+    });
+
+    console.log(arrayM);
+    console.log(arrayF);
+    console.log(arrayA);
+    console.log(arrayB);
+    console.log(arrayC);
     document.getElementById('contSinDuplicar').innerHTML = Array.from(sinDuplicados).join("\n");
 
 
@@ -53,11 +93,3 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
 
 
 
-/*const lineas = contenido.split('\n');
-sinD=new Set([]);
-lineas.forEach(linea => {
-    sinD.add(linea);
-});
-
-console.log(sinD);
-console.log(lineas);*/
