@@ -1,0 +1,49 @@
+.contenido{
+    border: black solid 1px;
+    height: 600px;
+    width: 60%;
+    margin: auto;
+    background-color: aqua;
+
+}
+.arriba{
+    border: solid black 1px;
+    height: 45%;
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+    box-sizing: border-box;
+    padding-top: 10%;
+    background-color: burlywood;
+}
+.abajo{
+    border: solid black 1px;
+    height: 45%;
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+    padding-left: 10%;
+    background-color: burlywood;
+    
+    
+}
+
+.horizontal{
+    border: solid black 1px;
+    width: 90%;
+    height: 20%;
+    margin: auto;
+    background-color: blue;
+    
+}
+
+.vertical{
+    border: solid black 1px;
+    float: left;
+    height: 80%;
+    width: 20%;
+    margin-top: 5%;
+    background-color: blue;
+
+    
+}

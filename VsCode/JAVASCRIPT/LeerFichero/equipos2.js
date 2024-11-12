@@ -25,15 +25,11 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
 
 
     const lineas = contenido.split('\r\n');
-
     sinDuplicados=new Set(lineas);
     sinDuplicados.delete("");
     arraySin=[...sinDuplicados];
-
-
     console.log(sinDuplicados);
     
-   
     arrayM=[];
     arrayF=[];
     arrayPM=[];
@@ -42,7 +38,6 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     arrayDM=[];
     arrayEquiposM=[];
     arrayReservasM=[];
-
 
     arraySin.forEach(lineaSin => {
         arrayLinea=lineaSin.split(";");
@@ -54,7 +49,6 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         }  
     });
 
-    
     arrayM.forEach(jugador=> {
         if(jugador[3]=="Portero"){
             arrayPM.push(jugador); 
@@ -68,7 +62,6 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         if(jugador[3]=="Delantero"){
             arrayDM.push(jugador); 
         }
-
     })
 
     while(arrayPM.length>=1&&arrayDefM.length>=4&&arrayCM.length>=3&&arrayDM.length>=3){
@@ -85,7 +78,6 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         }
         arrayEquiposM.push(equipo);
 
-
     }
     function reservas(array){
     array.push(arrayPM);
@@ -93,15 +85,12 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     array.push(arrayCM);
     array.push(arrayDM);
     return array;
-
     }
 
     arrayReservasM=reservas(arrayReservasM);
     console.log(arrayEquiposM);
     console.log(arrayReservasM);
 
-
-    
     document.getElementById('contSinDuplicar').innerHTML = Array.from(sinDuplicados).join("\n");
 
 
