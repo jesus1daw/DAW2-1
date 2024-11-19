@@ -19,9 +19,15 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         return;
     }
     const contenido = await leerArchivo(archivo);
-    console.log(contenido);
-    mostrarContenido(contenido);
+    // console.log(contenido);
+    // mostrarContenido(contenido);
 
+
+    tiempo=Date.now();
+    console.log(tiempo);
+
+    contador=0;
+    
     //Limpiamos contenido duplicado y lineas vacias\\
     const lineas = contenido.split('\r\n');
     sinDuplicados=new Set(lineas);
@@ -29,6 +35,7 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     arraySin=[...sinDuplicados];
     console.log(sinDuplicados);
     
+    while(contador<10000){
     //Declaramos los arrays necesarios
     arrayM=[];
     arrayF=[];
@@ -57,8 +64,8 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     dividirPosiciones(arrayF);
     crearEquipos();
     arrayReservas=reservas(arrayReservas);
-    console.log(arrayEquipos);
-    console.log(arrayReservas);
+    // console.log(arrayEquipos);
+    // console.log(arrayReservas);
     
     //FUNCION que divide un array que de jugadores que introduzcamos por posiciones.
     //Rellena los arrays y no devuelve nada.
@@ -117,6 +124,13 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         return array;
     }
 
-    document.getElementById('contSinDuplicar').innerHTML = Array.from(sinDuplicados).join("\n");
+
+    contador=contador+1;
+}
+
+    tiempo2=Date.now();
+    console.log(tiempo2);
+    console.log("Diferencia de tiempo en segundos: " +(tiempo2-tiempo)*0.001);
+    
 
 }, false);

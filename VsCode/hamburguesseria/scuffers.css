@@ -1,0 +1,289 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+ body {
+    font-family:  Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+    
+    
+}
+
+img[alt="logo-scuffers"]{
+    width: 170px;
+    height: 85px;
+
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 20px;
+    height: 100px;
+}
+
+.menu-derecha{
+    margin-right: 40px;
+}
+
+.menu-derecha nav{
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+}
+
+nav a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.seleccion{
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    gap:5px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.seleccion a{
+    text-decoration: none;
+    font-size: 0.7em;
+    color: black
+}
+
+.video-banner {
+    margin-top: 10px;
+    width: 100%;
+    height: 300px; 
+    overflow: hidden; 
+}
+
+.video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+
+footer{
+    padding: 10px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 21%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+
+.footer-derecha{
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+img[alt="logo-instagram"]{
+    width: 25px;
+    height:25px;
+}
+img[alt="logo-tiktok"]{
+    width: 25px;
+    height:25px;
+}
+img[alt="logo-facebook"]{
+    width: 25px;
+    height:25px;
+}
+
+.colores button{
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+#color1{
+    background-color: blanchedalmond;
+}
+#color2{
+    background-color: cadetblue;
+}
+#color3{
+    background-color: darkolivegreen;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.prendas{
+    width: 100%;
+    height: 800px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    
+}
+
+.articulo{
+    position: relative;
+    width: 272.59px;
+    height: 408.89px;
+    display: inline-block;
+    margin-right: 35px;
+}
+
+.articulo img[alt="icono-añadir"]{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:320px;
+    right: 20px;
+}
+
+.articulo img[alt="icono-añadir"]:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.articulo img{
+    width: 250px;
+    height: 360px;
+    
+}
+
+.articulo p{
+    
+    font-size: 0.7em;
+    display: inline-block;
+}
+
+
+.tallas button{
+    background-color: transparent;
+    font-size: 0.8em;
+    border: none;
+}
+
+
+
+section{
+    margin: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.sorteo{
+    position: relative;
+    padding: 10px;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    margin:  60px auto;
+   
+}
+
+.sorteo p,label{
+    font-weight: bold;
+}
+
+
+.scuffers-main img{
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.text-promo{
+    position: absolute;
+    top: 330px;
+    left: 425px;
+}
+
+.text-promo p {
+    font-size: 2.5em;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-villa img{
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.medio-scuffers{
+    margin: 10px;
+    position: relative;
+}
+.medio-scuffers img{
+    height:449px;
+    width: 270px;
+
+}
+.banner-villa{
+    background-image: url(../../img/villa-scufers.jpg);
+    background-size: cover;     
+    background-position: center;     
+    background-repeat: no-repeat;
+    position: relative;
+    width: 830px;
+    height: 449px;
+    margin: 10px;
+    
+}
+.scuffers-main{
+    margin: 10px;
+    position: relative;
+}
+
+
+
+.footer-izquierda{
+display: flex;
+justify-content: space-between;
+gap: 100px;
+}
+.footer-izquierda a{
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.7em;
+}
+
+
