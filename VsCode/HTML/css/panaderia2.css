@@ -18,10 +18,10 @@ body{
 }
 
 .bar{
-    background-color: #b6851ac9 ;
+    background-color: #b6851ad8 ;
     height: 100px;
     width: 100%;
-    display: flex;
+    
     box-sizing: border-box;
     border: solid black 1px;
     position: fixed;
@@ -29,6 +29,9 @@ body{
     z-index: 10;
     
 
+}
+.bar a:hover{
+    border-bottom: 2px solid black;
 }
 .logo{
     width: 25%;
@@ -39,6 +42,7 @@ body{
     height: 90%;
     margin: 0;
     z-index:100 ;
+    float: left;
     
     
     
@@ -49,11 +53,12 @@ body{
     width: 50%;
     box-sizing: border-box;
     height: 100%;
-    display: flex;
+   
     align-items: center;
     justify-content: center;
-    margin: auto ;
-    
+    float: left;
+    margin-left: 90px;
+    margin-top: 30px;
     
        
 }
@@ -75,10 +80,12 @@ a:nth-child(1){
 }
 
 .extra{
-    width: 25%;
+    margin-top: 30PX;
+        width: 10%;
     height: 100%;
-    display: flex;
+    float: right;
     justify-content: end;
+    
 
 }
 .extra img{
