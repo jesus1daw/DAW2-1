@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio Each JQuery</title>
+    <link rel="stylesheet" href="/css/ejercicio4_1.css">
+    <script src="/js/libreria.js"></script>
+
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Examen 1</th>
+                <th>Examen 2</th>
+                <th>Examen 3</th>
+                <th>Nota evaluación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pepe Pérez</td>
+                <td>5</td>
+                <td>10</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Ana Ramírez</td>
+                <td>6</td>
+                <td>3</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Rosa Torres</td>
+                <td>9</td>
+                <td>3</td>
+                <td>9</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sara Gallardo</td>
+                <td>8</td>
+                <td>8</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Cuerpo del script -->
+<script>
+$(document).ready(function(){
+
+    $("tr").each(function(){
+        suma=0;
+        media=0;
+        
+        valor1=parseFloat($(this).find("td:nth-child(2)").text());
+        valor2=parseFloat($(this).find("td:nth-child(3)").text());
+        valor3=parseFloat($(this).find("td:nth-child(4)").text());
+
+        suma=valor1+valor2+valor3;
+        console.log(suma);
+        
+        media=suma/3;
+
+        $(this).find("td:nth-child(5)").text(media.toFixed(2));
+
+        if(media>=5){
+            $(this).find("td:nth-child(5)").css("color","green")
+        } else{
+            $(this).find("td:nth-child(5)").css("color","red")
+        }
+            
+    })
+
+    
+});
+
+
+
+</script>
+   
+</body>
+
+</html>
