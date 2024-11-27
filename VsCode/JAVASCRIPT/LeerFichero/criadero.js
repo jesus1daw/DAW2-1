@@ -45,12 +45,14 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     console.log("AbueloM: "+ (padres3[0] ?? "desconocido"));
     console.log("AbuelaM: "+ (padres3[1] ?? "desconocido"));
 
-    console.log("Hijos: " + padres[2]);
+    console.log("Hijos: " + (padres[2] ?? "no tiene hijos conocidos"));
     
     function ascendencia(perro){
         padre=null;
         madre=null;
         hijos=[];
+        hijos2=null;
+        
         arraySin.forEach(linea => {
             arrayLinea=linea.split(";");
             indice=arrayLinea.indexOf(perro);
@@ -65,15 +67,12 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
                 hijosLimpio=new Set(hijos);
                 hijosLimpio.delete("");
                 hijos2=[...hijosLimpio];
+                hijos2.sort().reverse();
             }
         });
 
         return [padre,madre,hijos2];
     }
-
-
-
-
 
     // arraySin.forEach(linea => {
     //     arrayLinea=linea.split(";");
@@ -110,12 +109,5 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     // console.log("Abuela Paterna: " + abuelaP);
     // console.log("Abuelo Materno: " + abueloM);
     // console.log("Abuela Materna: " + abuelaM);
-
-
-
-
-
-
-
 
 }, false);

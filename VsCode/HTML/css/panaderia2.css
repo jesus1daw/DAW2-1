@@ -226,6 +226,7 @@ a:nth-child(1){
 .producto a{
     padding: 0;
     float: left;
+    position: relative;
     margin-left: 30px;
     font-size: 17px;
     color: #563F0C;
