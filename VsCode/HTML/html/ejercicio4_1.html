@@ -45,7 +45,7 @@
                 <td>9</td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="sara">
                 <td>Sara Gallardo</td>
                 <td>8</td>
                 <td>8</td>
@@ -59,7 +59,7 @@
 <script>
 $(document).ready(function(){
 
-    $("tr").each(function(){
+    $("tbody tr").each(function(){
         suma=0;
         media=0;
         
@@ -75,9 +75,11 @@ $(document).ready(function(){
         $(this).find("td:nth-child(5)").text(media.toFixed(2));
 
         if(media>=5){
-            $(this).find("td:nth-child(5)").css("color","green")
+            // $(this).find("td:nth-child(5)").css("color","green");
+            $(this).find("td").css("color","green");
         } else{
-            $(this).find("td:nth-child(5)").css("color","red")
+            // $(this).find("td:nth-child(5)").css("color","red");
+            $(this).find("td").css("color","red");
         }
             
     })
