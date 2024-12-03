@@ -14,6 +14,7 @@
     <button>Boton2</button>
     <input type="text" value="Cancelar">
 
+    <input type="text" value="valor" id="ej">
 
 
 <script>
@@ -35,8 +36,13 @@
 
     });
 
-
-
+    console.log($("#ej").attr("value"));
+    console.log($("#ej").prop("value"));
+    console.log($("#ej").attr("disabled"));
+    console.log($("#ej").prop("disabled"));
+    $("#ej").val("valor2")
+    console.log($("#ej").attr("value"));
+    console.log($("#ej").prop("value"));
     });
         
 </script>
