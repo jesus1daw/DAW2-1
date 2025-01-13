@@ -16,6 +16,10 @@
 
     <input type="text" value="valor" id="ej">
 
+    <article>Articulo 1</article>
+    <article>Articulo 2</article>
+    <article>Articulo 3</article>
+
 
 <script>
 
@@ -43,6 +47,10 @@
     $("#ej").val("valor2")
     console.log($("#ej").attr("value"));
     console.log($("#ej").prop("value"));
+
+
+    console.log($("article").html());
+    console.log($("article").html("hola"));
     });
         
 </script>

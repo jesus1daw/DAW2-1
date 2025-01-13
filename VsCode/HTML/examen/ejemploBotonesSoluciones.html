@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+ .btn {
+  border: none; 
+  color: white; 
+  padding: 14px 28px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  display: inline-block;
+  margin: 5px;
+}
+
+#primary {background-image: linear-gradient(to right, #007bff, #4ab2e2);} 
+#primary:hover {background-image: linear-gradient(to right, #0b7dda, #4ab2e2);
+box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+/*
+0px: Este es el desplazamiento horizontal de la sombra. 
+Un valor de 0px significa que la sombra no se moverá a la izquierda ni a la derecha; 
+estará centrada horizontalmente. 8px: Este es el desplazamiento vertical de la sombra. 
+Un valor de 8px significa que la sombra se desplazará hacia abajo 8 píxeles desde el borde del elemento, 
+creando un efecto de elevación.
+16px: Este es el radio de desenfoque de la sombra. Cuanto mayor sea el valor, más difusa y suave será la sombra.
+En este caso, 16px da una sombra bastante difusa.
+rgba(0,0,0,0.3): Este es el color de la sombra en formato RGBA, donde: 0,0,0 representa el color negro. 0.3 es la opacidad de la sombra (en una escala de 0 a 1). En este caso, la sombra es negra con una opacidad del 30%, lo que la hace semitransparente.*/
+}
+.secondary {background-image: linear-gradient(to right, #6c757d, #adb5bd);} 
+.secondary:hover {background-image: linear-gradient(to right, #848b92, #adb5bd);}
+.success {background-image: linear-gradient(to right, #28a745, #56c150);} 
+.success:hover {background-image: linear-gradient(to right, #34b556, #56c150);}
+.warning {background-image: linear-gradient(to right, #ffc107, #ffda4e);} 
+.warning:hover {background-image: linear-gradient(to right, #ffb200, #ffda4e);}
+.danger {background-image: linear-gradient(to right, #dc3545, #e0666e);} 
+.danger:hover {background-image: linear-gradient(to right, #d32838, #e0666e);}
+
+
+    </style>
+</head>
+<body>
+    <button class="btn" id="primary"><i class="fas fa-exclamation-circle"></i> Primary</button>
+    <button class="btn secondary"><i class="fas fa-exclamation-circle"></i> Secondary</button>
+    <button class="btn success"><i class="fas fa-check-circle"></i> Success</button>
+    <button class="btn warning"><i class="fas fa-exclamation-triangle"></i> Warning</button>
+    <button class="btn danger"><i class="fas fa-times-circle"></i> Danger</button>
+
+</body>
+</html>

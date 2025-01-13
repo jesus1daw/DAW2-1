@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarWars</title>
+    <style>
+          @keyframes animacionStarWars {
+  from {
+      transform: perspective(100vh) rotateX(15deg) translateY(100%);
+    }
+
+  to {
+      transform: perspective(100vh) rotateX(25deg) translateY(-200%);
+    }
+} 
+
+.star-wars {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffb13a;
+}
+.star-wars-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  text-align: justify;
+  letter-spacing: 0.1rem;
+  
+  animation: animacionStarWars 20s linear infinite;
+ 
+}
+.star-wars h2,
+.star-wars h3 {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.star-wars p {
+  font-size: 3vw;
+  line-height: 4rem;
+}
+
+    </style>
+
+</head>
+<body class="star-wars-box star-wars">
+
+    <h1>Star Wars Presentacion</h3>
+    <h2>Episode III</h2>
+    <h3>REVENGE OF THE SITH</h3>
+    <p>War! The Republic is crumblin gunder attacks by the ruthless Sith Lord, Count Dooku. There are heroes on both sides. Evil is everywhere. </p>
+    <p>In a stunning move, the fiendish droid leader, General Grievous, has swept into the Republic capital and kidnapped Chancellor Palpatine, leader of the Galactic Senate. </p>
+    <p>As the Separatist Droid Army attempts to flee the besieged capital with their valuable hostage, two Jedi Knights lead a desperate mission to rescue the captive Chancellor.</p>       
+    
+</body>
+</html>

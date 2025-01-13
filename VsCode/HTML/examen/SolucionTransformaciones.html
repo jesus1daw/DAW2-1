@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* Menú horizontal con transiciones */
+    /* Formato general de cada item */
+    .container{
+  position: relative;
+}
+.caja{
+  width: 180px;
+  height: 180px;
+  color: #FFF;
+  text-align: center;
+  line-height: 180px;
+  margin: 15px;
+  float: left;
+  font-size: 18px;
+  font-family: Arial;
+}
+.caja1{
+  background-color: #C0392B;
+  
+  transition: 1s linear;
+}
+.caja1:hover{
+  
+  transform: scale(.5);
+}
+.caja2{
+  background-color: #9B59B6;
+  
+  transition: 1s linear;
+}
+.caja2:hover{
+  
+  transform: rotate(360deg);
+}
+.caja3{
+  
+  transition: 1s linear;
+  background-color: #2980B9;
+}
+.caja3:hover{
+  
+  transform: translate(10%);
+}
+.caja4{
+  background-color: #3498DB;
+  
+  transition: 1s linear;
+}
+.caja4:hover{
+  
+  transform: skew(10deg);
+}
+.caja5{
+  background-color: #17A589;
+  
+  transition: 1s linear;
+}
+.caja5:hover{
+  
+  transform: skewY(10deg);
+}
+.caja6{
+  background-color: #F1C40F;
+  
+  transition: 1s linear;
+}
+.caja6:hover{
+  
+  transform: skewX(-5deg);
+}
+.caja7{
+  
+  transition: 1s linear;
+  background-color: #E67E22;
+}
+.caja7:hover{
+  
+  transform: translateX(20px);
+}
+.caja8{
+
+  
+
+  transition: 1s linear;
+  background-color: #95A5A6;
+}
+.caja8:hover{
+  
+  transform: translateY(20px);
+}
+.caja9{
+  
+  transition: 1s linear;
+  background-color: #2C3E50;
+}
+.caja9:hover{
+  
+  transform: perspective(150px) rotateX(45deg);
+}
+.caja10{
+  
+  transition: 1s linear;
+  background-color: grey;
+}
+.caja10:hover{
+  
+  transform: perspective(150px) rotateY(45deg);
+}
+.caja11{
+  
+  transition: 1s linear;
+  background-color: black;
+}
+
+      
+        </style>
+</head>
+<body>
+  <div class="container">
+    <div class="caja caja1">Scale</div>
+    <div class="caja caja2">Rotate</div>
+    <div class="caja caja3">Translate</div>
+    <div class="caja caja4">Skew</div>
+    <div class="caja caja5">SkewY</div>
+    <div class="caja caja6">SkewX</div>
+    <div class="caja caja7">TranslateX</div>
+    <div class="caja caja8">TranslateY</div>
+    <div class="caja caja9">Perspective rotate</div>
+    <div class="caja caja10">Perspective rotate</div>
+  </div>
+</body>
+</html>

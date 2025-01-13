@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .btn {
+    width: 200px;
+    height: 50px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: transform 0.5s , background-image 0.5s; /*Definimos la transicion de los estilos que queremos
+     y le aplicamos 0,5 segundos de duracion*/
+    
+}
+.btn:hover{ /*Al pasar el raton por encima*/
+    transform: scale(1.1); /*Transformamos a escala 1.1, es decir un 10%*/
+    background-image: linear-gradient(to right,#007BFF,green); /*Añadimos un fondo gradiente hacia la derecha
+    desde el color azul inicial hasta el verde*/
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn">Pulsar Aqui</button>
+    </div>
+    
+</body>
+</html>

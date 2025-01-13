@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .cuadrado {
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;  
+    animation-name: examen; /*LLamamos a la animacion*/
+    animation-duration: 4s; /*Duración de 4 segundos*/
+    animation-iteration-count: infinite; /*Se repita infinitamente*/
+    
+}
+
+@keyframes examen { /*Creamos la animacion (funcion)*/
+    from{
+
+    }
+    25%{ /*En este tramo el fondo es amarillo*/
+        background-color: yellow;
+    } 
+    50%{ /*En este tramo cambia el fondo a azul y se desplaza horizontalmente 300px a la derecha*/
+        background-color: blue;
+        transform: translateX(300px);
+    }
+    to{ /*En este último tramo cambia el color del fondo a rojo*/
+        background-color: red;
+        
+    }
+    
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="cuadrado"></div>
+    
+</body>
+</html>
