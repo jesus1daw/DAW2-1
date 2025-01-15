@@ -40,7 +40,7 @@ function Viaje(origen,destino,duracion,pais,precio){
 
 const mallorca= new Viaje("Madrid","Mallorca","10 dias","España",100.0);
 const londres= new Viaje("Madrid","Londres","5 dias","UK",150.0);
-const Burgos= new Viaje("Madrid","Burgos","8 dias","España");
+const burgos= new Viaje("Madrid","Burgos","8 dias","España");
 const toledo= new Viaje("Madrid","Toledo","2 dias","España",74.89);
 
 delete(toledo.pais); 
@@ -89,15 +89,15 @@ console.log(cliente1.contratado());
 
 
 
-const cliente2=new Cliente("Ivan","Soria","Madrid",Burgos,"84569345");
+const cliente2=new Cliente("Ivan","Soria","Madrid",burgos,"84569345");
 
 console.log(cliente2);
 console.log(cliente2.contratado());
 console.log("Duracion: "+cliente2.miViaje.duracion);
 
-Burgos.precio=(49.99);
-Burgos.descuento=(0.2);
-Burgos.precioFinal=((Burgos.precio)*(1-Burgos.descuento));
+burgos.precio=(49.99);
+burgos.descuento=(0.2);
+burgos.precioFinal=((burgos.precio)*(1-burgos.descuento));
 
 
 const cliente3=new Cliente("Khaled","Beno","Marruecos",mallorca,"8646594");
@@ -116,7 +116,7 @@ console.log(arrayClientes);
 const arrayViajes=[
     mallorca,
     londres,
-    Burgos,
+    burgos,
     toledo
 ];
 console.log(arrayViajes);
@@ -135,3 +135,82 @@ arrayClientes.forEach(cliente => {
 });
 
 console.log("Los ingresos totales por parte de los clientes son: " +ingresosClientes);
+
+function BurgosMes (mes,fechaSalida){
+    this.mes=mes;
+    this.fechaSalida=fechaSalida;
+}
+
+const burgosEnero= new BurgosMes("Enero","19/01/2025");
+
+console.log(burgosEnero);
+
+burgosEnero.__proto__=burgos;
+
+console.log(burgosEnero.duracion);
+
+
+
+
+const direccion1={
+    calle: "Arcipreste",
+    numero: "12",
+    piso: "3B"
+}
+
+const agencia={
+    nif:"13221421",
+    direccion: direccion1,
+    telefono: "53453533",
+    dirCom: function(){
+        return this.direccion.calle+" "+this.direccion.numero+" "+this.direccion.piso;
+    }
+}
+
+
+
+console.log(agencia);
+console.log(agencia.dirCom());
+
+const pepe=new Cliente("Pepe","Viyuela","España","","5654645");
+const roma=new Viaje("Madrid","Roma","6 dias","Italia",120.50);
+
+roma.__proto__=agencia;
+
+
+
+
+
+//Origen, destino,duraccion,precio,direccion agencia,telefono agencia;
+console.log("Direccion y telefono:")
+console.log(roma.dirCom());
+console.log(roma.telefono);
+
+arrayViajes.forEach(viaje => {
+    viaje.__proto__=agencia; 
+    console.log(viaje.nif);  
+});
+
+//Sin prototipo
+console.log(cliente2.miViaje.duracion);
+
+
+arrayClientes.forEach(cliente => {
+    
+    arrayViajes.forEach(viaje=>{
+
+        if(cliente.miViaje===viaje){
+            cliente.__proto__=viaje;
+        }
+    });  
+});
+
+//Con prototipo
+console.log(cliente2.duracion);
+console.log(cliente3.duracion);
+console.log(cliente4.duracion);
+
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap y Unwrap</title>
+     <!-- Incluir jQuery remoto -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .article_outer {
+            border: 1px solid blue;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="articulos">
+        <article>Articulo 1</article>
+        <article>Articulo 2</article>
+        <article>Articulo 3</article>
+    </section>
+
+    <button id="envolver">Envolver</button>
+    <button id="desenvolver">Desenvolver</button>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#envolver').click(function() {
+                $('#articulos article').wrap('<div class="article_outer"></div>')
+            });
+
+            $('#desenvolver').click(function() {
+                $('#articulos article').unwrap();
+                
+            });
+        });
+    </script>
+</body>
+</html>

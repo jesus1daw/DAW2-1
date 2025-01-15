@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <!-- Incluir jQuery remoto -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+
+        h1{
+            text-align: center;
+        }
+        .completada {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    Crea una lista de tareas y permite que el usuario marque las tareas como completadas. 
+    Cuando se hace clic en una tarea, debe alternar una clase que cambie su apariencia (por ejemplo, tachar el texto)
+    También debe haber un botón que elimine todas las tareas completadas.
+-->
+
+<h1>Lista de Tareas</h1>
+
+
+<ul>
+    <li>
+        <input type = "checkbox" class = "alternar">Ingredientes para la cena
+    </li> 
+    <li>
+        <input type = "checkbox" class = "alternar">Completar el proyecto de HTML
+    </li>
+    <li>
+        <input type = "checkbox" class = "alternar">Llamar a la madre
+    </li>
+    <li>
+        <input type = "checkbox" class = "alternar">Estudiar para el examen de CSS
+    </li>
+    <li>
+        <input type = "checkbox" class = "alternar">Hacer ejercicio
+    </li>
+</ul>
+
+<button id="eliminarCompletadas">Eliminar Tareas Completadas</button>
+
+    <script>
+        $(document).ready(function() {
+
+            // Alternar clase completada al hacer clic en una tarea
+            $('.alternar').on('click',function () {
+                $(this).parent().toggleClass('completada');
+            });
+
+
+            // // Eliminar tareas completadas
+            $('#eliminarCompletadas').click(function() {
+                $('li.completada').remove();
+            });
+
+
+        });
+    </script>
+</body>
+</html>
