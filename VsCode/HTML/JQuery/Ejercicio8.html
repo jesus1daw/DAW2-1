@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <script src="libreria.js"></script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <input type="checkbox" name="cafeteria" >
+            <label for="cafeteria">La cafetería</label>
+            <br>
+            <input type="checkbox" name="aula" >
+            <label for="aula">Aula</label>
+            <br>
+            <input type="checkbox" name="biblioteca" >
+            <label for="cafeteria">Biblioteca</label>
+            <br>
+            <input type="checkbox" name="patio" >
+            <label for="cafeteria">Patio</label>
+            <br>
+            <input type="checkbox" name="jefaturas" >
+            <label for="cafeteria">Jefatura de estudios</label>
+            <br>
+            <input type="checkbox" name="secretaria" >
+            <label for="cafeteria">Secretaría</label>
+            <br>
+
+           
+        </fieldset> <br>
+        <button id="limpiar">Limpiar datos</button>
+
+        <h3>Lista de Selecciones:</h3>
+        <ol id="lista">
+
+
+        </ol>
+
+    <script>
+        $(document).ready(function() {
+            $(":checkbox").on("change", function(){
+
+                var textoSeleccionado= $(this).next("label").text();
+
+                if($(this).prop("checked")){
+
+                    $("#lista").append("<li>"+textoSeleccionado+"</li>");
+                    
+                } else{
+
+                    $("#lista li").each(function(){
+
+                        if($(this).text()==textoSeleccionado){
+                            $(this).remove();
+                        }
+
+                    });
+
+                }
+
+            });
+
+            $("#limpiar").on("click",function(){
+
+                $("#lista").empty();
+                $(":checkbox").prop("checked" , false).prop("disabled",true);
+
+
+            });
+
+
+        });
+    </script>
+</body>
+</html>
