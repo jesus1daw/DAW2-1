@@ -201,6 +201,7 @@ arrayClientes.forEach(cliente => {
 
         if(cliente.miViaje===viaje){
             cliente.__proto__=viaje;
+            
         }
     });  
 });
@@ -213,4 +214,19 @@ console.log(cliente4.duracion);
 
 
 
+
+
+    arrayClientes.forEach(cliente => {
+    
+        arrayViajes.forEach(viaje=>{
+    
+            if(cliente.miViaje===viaje){
+                
+                console.log("Cliente: "+cliente.nombre+" // Destino: "+cliente.destino+" // Origen: "+cliente.origen
+                    +" // Precio: "+cliente.precio+" // NIF: "+cliente.nif+" // Direccion: "+cliente.dirCom()+
+                    " // Telefono: "+cliente.miViaje.telefono);
+  
+            }
+        });  
+    });
 

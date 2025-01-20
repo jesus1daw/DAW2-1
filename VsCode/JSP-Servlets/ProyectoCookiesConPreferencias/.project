@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ProyectoCookies</name>
+	<name>ProyectoCookiesConPreferencias</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -30,7 +30,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1737358838961</id>
+			<id>1737377590079</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
