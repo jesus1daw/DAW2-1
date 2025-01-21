@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.sql.*;
 /**
  * Servlet implementation class recepcion
  */
@@ -80,66 +80,55 @@ public class recepcion extends HttpServlet {
 		response.sendRedirect("index.jsp");
 		} else {
 			
-			//Paso 1: Cargar el driver JDBC.
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			//Paso 2: Conectarse a la Base de Datos utilizando la clase Connection
-			String userName="admin1";
-			String password="admin1";
-			String url="jdbc:mysql://localhost/TiendaLibros";
-
-			Connection conn = DriverManager.getConnection(url, userName, password);
-			//Paso 3: Crear sentencias SQL, utilizando objetos de tipo Statement
-			Statement stmt = conn.createStatement();
-			String sqlStr = "SELECT * FROM libros WHERE ";
-			for (int i = 0; i < autores.length; i++ ) {
-			sqlStr = sqlStr + "autor = '" + autores[i] + "' ";
-			if (i != autores.length - 1) {
-			sqlStr += "OR ";
-			}
-			}
-			sqlStr += "AND cantidad > 0 ORDER BY precio DESC";
-			//para depuraci´on
-			System.out.println("La consulta sql es " + sqlStr);
-			//Paso 4: Ejecutar las sentencias SQL a trav´es de los objetos Statement
-			ResultSet rset = stmt.executeQuery(sqlStr);
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+				String userName = "admin1";
+		        String password = "admin1";
+		        String url = "jdbc:mysql://localhost:3306/Tienda";
+		        try {
+		            
+		            Class.forName("com.mysql.cj.jdbc.Driver");
+		            Connection conn = DriverManager.getConnection(url, userName, password);
+		            response.getWriter().append("Conexion exitosa");
+		           
+		            String sqlStr = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ? ";
+		            PreparedStatement consulta=conn.prepareStatement(sqlStr);
+		            consulta.setString(1, nombre);
+		            consulta.setString(2, clave);
+		            
+		            ResultSet resultado=consulta.executeQuery();
+		            
+		            if (resultado.next()) {
+		                response.getWriter().append("Usuario encontrado \r\n");
+		            } else {
+		                response.getWriter().append("Usuario no encontrado \r\n");
+		            }
+		            
+		        } catch (ClassNotFoundException e) {
+		            // Manejar excepción si el driver no se encuentra
+		            System.out.println("Error: No se encontró el driver JDBC.");
+		            e.printStackTrace();
+		        } catch (SQLException e) {
+		            // Manejar errores relacionados con la base de datos
+		            System.out.println("Error: No se pudo conectar a la base de datos.");
+		            e.printStackTrace();
+		        } catch (Exception e) {
+		            // Capturar cualquier otra excepción
+		            System.out.println("Error inesperado.");
+		            e.printStackTrace();
+		        }
 		}
+			
+
+			
 		
 		
-		
-		
+			
 		
 		
 	}
+}
+
+	
+	
 
 	
 	
@@ -147,20 +136,4 @@ public class recepcion extends HttpServlet {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
+
