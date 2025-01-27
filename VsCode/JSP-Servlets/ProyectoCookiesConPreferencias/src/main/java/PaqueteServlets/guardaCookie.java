@@ -38,20 +38,41 @@ public class guardaCookie extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		
 		HttpSession session = request.getSession();
 		String nombre = (String) session.getAttribute("nombre");
+		Cookie[] cookies=request.getCookies();
+		
+		for (Cookie cookie : cookies) {
+			 String name=cookie.getName();
+			if(name.equals(nombre)) {
+				// Actualizar color y contador de visitas
+	            String[] valueParts = cookie.getValue().split("\\|");
+	            
+	            int visitas = Integer.parseInt(valueParts[1]) + 1;
+	            String color = request.getParameter("color");
+	            cookie.setValue(color + "|" + visitas);
+	            response.addCookie(cookie);
+				
+			}else {
+		
 		String valor=request.getParameter("color");
 		
+<<<<<<< HEAD:VsCode/JSP-Servlets/ProyectoCookiesConPreferencia/src/main/java/PaqueteServlets/guardaCookie.java
 		Cookie laCookie=new Cookie(nombre,valor);
+=======
+		Cookie laCookie=new Cookie(nombre,valor+"|1");
+		
+>>>>>>> 5e65b060c839b32a88725ba139c025a8671f2c99:VsCode/JSP-Servlets/ProyectoCookiesConPreferencias/src/main/java/PaqueteServlets/guardaCookie.java
 		response.addCookie(laCookie);
 		response.sendRedirect("index.jsp");
 		
 		
 		
 		
+			}
+		
 	}
+		response.sendRedirect("index.jsp");
 
+}
 }
