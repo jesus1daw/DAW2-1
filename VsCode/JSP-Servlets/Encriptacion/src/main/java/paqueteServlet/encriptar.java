@@ -1,26 +1,29 @@
-package PaqueteServlets;
+package paqueteServlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
+import java.util.HexFormat;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+
+import org.eclipse.jdt.internal.compiler.batch.Main;
 
 /**
- * Servlet implementation class guardaCookie
+ * Servlet implementation class encriptacion
  */
-@WebServlet("/guardaCookie")
-public class guardaCookie extends HttpServlet {
+@WebServlet("/encriptacion")
+public class encriptar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public guardaCookie() {
+    public encriptar() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,21 +40,18 @@ public class guardaCookie extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		
-		HttpSession session = request.getSession();
-		String nombre = (String) session.getAttribute("nombre");
-		String valor=request.getParameter("color");
-		
-		Cookie laCookie=new Cookie(nombre,valor);
-		response.addCookie(laCookie);
-		response.sendRedirect("index.jsp");
-		
-		
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+	
+	
+	
+	private static byte[] encrypt(SecretKey key, String text) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+        return cipher.doFinal(text.getBytes());
+    }
+	
+	
 
 }

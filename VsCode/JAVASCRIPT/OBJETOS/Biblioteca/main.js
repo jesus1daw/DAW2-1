@@ -81,7 +81,7 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
 
 
 
-
+//CONSTRUCTOR de objetos Lector
 function Lector(numSocio,nombre,apellido,telefono,email,bajaLector,fechaBaja){
 
     this.numSocio=numSocio;
@@ -95,6 +95,7 @@ function Lector(numSocio,nombre,apellido,telefono,email,bajaLector,fechaBaja){
 
 };
 
+//CONSTRUCTOR de objetos Libro
 function Libro(codLibro,isbn,autor,titulo,editorial,ejemplares,bajaLibro,fechaBaja){
 
     this.codLibro=codLibro;
@@ -108,6 +109,7 @@ function Libro(codLibro,isbn,autor,titulo,editorial,ejemplares,bajaLibro,fechaBa
 
 };
 
+//CONSTRUCTOR de objetos Prestamo
 function Prestamo(numPrestamo,numSocio,codLibro,fechaPrestamo,fechaDevolucion){
 
     this.numPrestamo=numPrestamo;
@@ -118,10 +120,11 @@ function Prestamo(numPrestamo,numSocio,codLibro,fechaPrestamo,fechaDevolucion){
 
 };
 
+//Inicializamos los arrays de objetos Lector y Libro
 arrayLectores=[];
 arrayLibros=[];
 
-//
+//FUNCION altaLector() recibe los parametros con prompt, crea un objeto Lector y lo mete en el array
 function altaLector(){
 
     let numSocio=prompt("Introduce numero de socio: ");
@@ -157,7 +160,7 @@ function modifLector(){
         }
     });
 }
-//
+//FUNCION altaLibro() recibe los parametros con prompt, crea un objeto Libro y lo mete en el array
 function altaLibro(){
 
     let codLibro=prompt("Introduce el codigo del libro: ");

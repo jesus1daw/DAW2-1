@@ -7,7 +7,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%String nombre=(String) session.getAttribute("nombre"); %>
+<%
+String nombre=(String) session.getAttribute("nombre");
+
+
+String color = "verde";
+
+
+Cookie[] cookies = request.getCookies(); 
+
+for( Cookie cookie : cookies) {
+	String name = cookie.getName();
+	
+	if(name.equals(nombre)){
+		color = cookie.getValue();
+	}
+	
+}
+
+%>
 
 <h1>Bienvenido <%=nombre %></h1>
 
@@ -18,9 +36,9 @@
 
 
 <label for="colores">Selecciona un color: </label>
-<input type="radio" name="color" value="verde" id="colores">VERDE
-<input type="radio" name="color" value="rojo" id="colores">ROJO
-<input type="radio" name="color" value="azul" id="colores">AZUL
+<input type="radio" name="color" value="verde" <%= "verde".equals(color) ? "checked" : "" %> id="colores">VERDE
+<input type="radio" name="color" value="rojo" <%= "rojo".equals(color) ? "checked" : "" %> id="colores">ROJO
+<input type="radio" name="color" value="azul" <%= "azul".equals(color) ? "checked" : "" %>id="colores">AZUL
 
 <input type="submit" value="Desconectar">
 

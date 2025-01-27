@@ -1,4 +1,4 @@
-package paqueteServlets;
+package PaqueteServlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
