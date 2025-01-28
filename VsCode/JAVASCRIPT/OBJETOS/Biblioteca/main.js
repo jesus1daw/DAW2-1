@@ -64,7 +64,8 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
         console.log(arrayLibros);
 
         
-
+        
+        
 
 
 
@@ -123,6 +124,9 @@ function Prestamo(numPrestamo,numSocio,codLibro,fechaPrestamo,fechaDevolucion){
 //Inicializamos los arrays de objetos Lector y Libro
 arrayLectores=[];
 arrayLibros=[];
+arrayTotalPrestamos=[];
+arrayPrestamosVivos=[];
+numPrestamo=0;
 
 //FUNCION altaLector() recibe los parametros con prompt, crea un objeto Lector y lo mete en el array
 function altaLector(){
@@ -213,27 +217,58 @@ function hayLibro(){
     });
 
 }
-
+//
 function prestamoLibro(){
-
+    error=true;
     codLibro=prompt("Introduce el codigo de libro para hacer un prestamo: ");
     arrayLibros.forEach(libro => {
         if(libro.codLibro==codLibro && libro.ejemplares>=1){
             
-            libro.ejemplares;//parse int;
+            libro.ejemplares=parseInt(libro.ejemplares)-1;
             console.log("Prestado");
-
-
-            
-        }else{
-           console.log("Libro no existente o no disponible");
+            error=false;
         }
     });
+    if(error==true){
+        console.log("Libro no encontrado o no existe");
+    }
 
+    return error;
+}
+//
+function devolucionLibro(){
+
+    codLibro=prompt("Introduce el codigo de libro para devolver un prestamo: ");
+    arrayLibros.forEach(libro => {
+        if(libro.codLibro==codLibro){
+            
+            libro.ejemplares=parseInt(libro.ejemplares)+1;
+            console.log("Devuelto");
+            error=false;
+        }
+    });
+    if(error==true){
+        console.log("Libro no encontrado o no existe");
+    }
 }
 
 
 
+
+function solicitudPrestamo(){
+    
+    numSocio=prompt("Introduce tu numero de socio para hacer un prestamo");
+    codLibro=prompt("Introduce el codigo del libro para prestar");
+    if(prestamoLibro()=false){
+        numPrestamo++;
+        let prestamo=new Prestamo(numPrestamo,numSocio,codLibro,Date.now(),null);
+        arrayTotalPrestamos.push(prestamo);
+        arrayPrestamosVivos.push(prestamo);
+    }else{
+        console.log("Libro no encontrado");
+    }
+
+}
 
 
 
