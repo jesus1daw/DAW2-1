@@ -220,6 +220,9 @@ function prestamoLibro(){
     arrayLibros.forEach(libro => {
         if(libro.codLibro==codLibro && libro.ejemplares>=1){
             
+            libro.ejemplares;//parse int;
+            console.log("Prestado");
+
 
             
         }else{

@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h4,
+p {
+  margin: 0px;
+}
+
+body {
+  background-color: white;
+}
+.cabecera {
+  color: #666666;
+  font-family: "Lobster", cursive;
+  margin: 20px auto;
+  width: 90%;
+}
+
+/* El contenedor flex para la primera fila de contenido */
+.contenedor1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  justify-content: space-between;
+}
+
+header {
+  border-bottom: 1px solid #666666;
+  margin-bottom: 1em;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}
+
+/* El menú */
+nav {
+  padding: 1em;
+  width: 10%;
+}
+
+nav div {
+  margin-bottom: 20px;
+}
+
+/* El elemento principal */
+main {
+  border: 1px solid #aaaaaa;
+  border-radius: 1em;
+  height: 400px;
+  padding: 1em;
+  text-align: center;
+  width: 54%;
+}
+
+main img {
+  border-radius: 1em;
+  height: 70%;
+  width: 80%;
+}
+
+.contenedor1 article:nth-of-type(1) {
+  height: 400px;
+}
+
+/* Artículo. Imágenes pequeñas */
+article {
+  border: 1px solid #aaaaaa;
+  border-radius: 1em;
+  /*height: 300px;*/
+  padding: 1em;
+  text-align: center;
+  width: 32%;
+}
+
+.contenedor2 {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+}
+
+article img {
+  border-radius: 1em;
+  height: 60%;
+  width: 100%;
+}
+
+/* Pie de la página */
+/* Pie de la página */
+footer {
+  align-items: center;
+  border-top: 1px solid #666666;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  padding: 2em;
+}
+
+footer img {
+  width: 50px;
+}
+
+
+h1,
+h4,
+p {
+  margin: 0px;
+}
+
+body {
+  background-color: white;
+}
+.cabecera {
+  color: #666666;
+  font-family: "Lobster", cursive;
+  margin: 20px auto;
+  width: 90%;
+}
+
+/* El contenedor flex para la primera fila de contenido.
+El contenedor debe ser flex. Debe de haber el máximo espacio de separación en los hijos.
+Se permite el desbordamiento multilínea
+*/
+.contenedor1 {
+
+}
+
+header {
+  border-bottom: 1px solid #666666;
+  margin-bottom: 1em;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}
+
+/* El menú */
+nav {
+  padding: 1em;
+  width: 10%;
+}
+
+nav div {
+  margin-bottom: 20px;
+}
+
+/* El elemento principal */
+main {
+  border: 1px solid #aaaaaa;
+  border-radius: 1em;
+  height: 400px;
+  padding: 1em;
+  text-align: center;
+  width: 54%;
+}
+
+main img {
+  border-radius: 1em;
+  height: 70%;
+  width: 80%;
+}
+
+.contenedor1 article:nth-of-type(1) {
+  height: 400px;
+}
+
+/* Artículo. Imágenes pequeñas */
+article {
+  border: 1px solid #aaaaaa;
+  border-radius: 1em;
+  /*height: 300px;*/
+  padding: 1em;
+  text-align: center;
+  width: 32%;
+}
+/*Dar formato a los artículos del contenedor2. El contenedor padre debe ser flex. Distribuye a sus hijos dejando el máximo espacio entre ellos. */
+.contenedor2 {
+
+
+}
+
+article img {
+  border-radius: 1em;
+  height: 60%;
+  width: 100%;
+}
+
+/* Pie de la página */
+/*Debe de ser flex. Se deja el máximo espacio de separación entre hijos. Deben de estar los hijos alineados en vertical centrados */
+
+footer {
+
+}
+
+footer img {
+  width: 50px;
+}
