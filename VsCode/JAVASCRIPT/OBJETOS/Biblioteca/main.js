@@ -64,10 +64,10 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
         console.log(arrayLibros);
 
         
-        
+        solicitudPrestamo();
         
 
-
+        console.log(arrayTotalPrestamos);
 
 
 
@@ -220,7 +220,9 @@ function hayLibro(){
 //
 function prestamoLibro(){
     error=true;
+    
     codLibro=prompt("Introduce el codigo de libro para hacer un prestamo: ");
+    
     arrayLibros.forEach(libro => {
         if(libro.codLibro==codLibro && libro.ejemplares>=1){
             
@@ -233,7 +235,7 @@ function prestamoLibro(){
         console.log("Libro no encontrado o no existe");
     }
 
-    return error;
+    return error,codLibro;
 }
 //
 function devolucionLibro(){
@@ -258,8 +260,9 @@ function devolucionLibro(){
 function solicitudPrestamo(){
     
     numSocio=prompt("Introduce tu numero de socio para hacer un prestamo");
-    codLibro=prompt("Introduce el codigo del libro para prestar");
-    if(prestamoLibro()=false){
+    
+    prestamo=prestamoLibro();
+    if(prestamo[0]==false){
         numPrestamo++;
         let prestamo=new Prestamo(numPrestamo,numSocio,codLibro,Date.now(),null);
         arrayTotalPrestamos.push(prestamo);
