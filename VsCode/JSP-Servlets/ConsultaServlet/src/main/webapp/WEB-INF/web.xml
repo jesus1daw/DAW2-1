@@ -11,23 +11,49 @@
   </welcome-file-list>
   
   
- <servlet>
-<servlet-name>PaqueteServlets.ConsultaServlet</servlet-name>
-<servlet-class>PaqueteServlets.ConsultaServlet</servlet-class>
-<init-param>
-<param-name>URLBaseDeDatos</param-name>
-<param-value>jdbc:mysql://localhost/tiendalibros</param-value>
-</init-param>
-<init-param>
-<param-name>usuario</param-name>
-<param-value>admin1</param-value>
-</init-param>
-<init-param>
-<param-name>password</param-name>
-<param-value>admin1</param-value>
-</init-param>
+<servlet>
+	<servlet-name>PaqueteServlets.ConsultaServlet</servlet-name>
+	<servlet-class>PaqueteServlets.ConsultaServlet</servlet-class>
+		<init-param>
+			<param-name>URLBaseDeDatos</param-name>
+			<param-value>jdbc:mysql://localhost/tiendalibros</param-value>
+		</init-param>
+		<init-param>
+			<param-name>usuario</param-name>
+			<param-value>admin1</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>admin1</param-value>
+		</init-param>
 </servlet>
+
+<context-param>
+	<param-name>URLBaseDeDatos</param-name>
+	<param-value>jdbc:mysql://localhost/TiendaLibros</param-value>
+</context-param>
+<context-param>
+	<param-name>usuario</param-name>
+	<param-value>root</param-value>
+</context-param>
+<context-param>
+	<param-name>password</param-name>
+	<param-value>despliegue</param-value>
+</context-param>
+<context-param>
+	<param-name>contador</param-name>
+	<param-value>10</param-value>
+</context-param>
+
+<filter>
+	<filter-name>PaqueteServlets.FiltroContador</filter-name>
+	<filter-class>PaqueteServlets.FiltroContador</filter-class>
+</filter>
+
+<filter-mapping>
+	<filter-name>PaqueteServlets.FiltroContador</filter-name>
+	<url-pattern>*.html</url-pattern>
+</filter-mapping>
 
 
 </web-app>
-
