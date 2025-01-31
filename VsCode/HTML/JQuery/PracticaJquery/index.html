@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1 class="titulo">Gestión de Inventario de Productos</h1>
+
+    <!-- FORMULARIO -->
+    <div class="formulario">
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre">
+        <br><br>
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria">
+            <option>Electrónica</option>
+            <option>Tecnología</option>
+            <option>Hogar</option>
+        </select>
+        <br><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad">
+        <br><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio">
+        <br><br>
+
+        <button id="boton_añadir">Añadir Producto</button>
+        <button id="limpiar">Limpiar Formulario</button>
+        
+    </div>
+    <br>
+
+    <!-- TABLA -->
+    <div class="tabla">
+        <table id="tablaProductos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="actualizarGrafico">Actualizar Gráfico</button>
+    </div>
+
+    <!-- GRÁFICO -->
+    <h1 class="titulo">Gráfico de Cantidades</h1>
+    <div id="graficoBarras"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Añadir producto a la tabla
+            $('#boton_añadir').click(function() {
+                const nombre = $('#nombre').val();
+                const categoria = $('#categoria').val();
+                const cantidad = parseInt($('#cantidad').val()) || 0;
+                const precio = parseFloat($('#precio').val()) || 0;
+
+                if (nombre && cantidad > 0 && precio > 0) {
+                    const nuevaFila = `
+                        <tr>
+                            <td>${nombre}</td>
+                            <td>${categoria}</td>
+                            <td>${cantidad}</td>
+                            <td>${precio.toFixed(2)}</td>
+                            <td><button class="eliminar">Eliminar</button></td>
+                        </tr>`;
+                    $('#tablaProductos tbody').append(nuevaFila);
+                    limpiarFormulario();
+                } else {
+                    alert('Por favor, complete todos los campos correctamente.');
+                }
+            });
+
+            // Limpiar formulario
+            $('#limpiar').click(function() {
+                limpiarFormulario();
+            });
+
+            function limpiarFormulario() {
+                $('#nombre').val('');
+                $('#cantidad').val('');
+                $('#precio').val('');
+                $('#categoria').val('Electrónica');
+            }
+
+            // Eliminar producto de la tabla
+            $(document).on('click', '.eliminar', function() {
+                $(this).closest('tr').remove();
+            });
+
+            // Actualizar gráfico
+            $('#actualizarGrafico').click(function() {
+    let cantidades = {};
+
+    $('#tablaProductos tbody tr').each(function() {
+        let nombre = $(this).find('td:eq(0)').text();
+        let cantidad = parseInt($(this).find('td:eq(2)').text()) || 0;
+        cantidades[nombre] = (cantidades[nombre] || 0) + cantidad;
+    });
+
+    $('#graficoBarras').empty();
+    $.each(cantidades, (nombre, cantidad) => {
+        $('#graficoBarras').append(
+            `<div class="barra" style="height: ${cantidad *10}px">${nombre} (${cantidad})</div>`
+        );
+    });
+});
+        });
+    </script>
+</body>
+</html>
