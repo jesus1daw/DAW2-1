@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "div">
+        <p id = "p1">Hola</p>
+        <p id = "p2">Adios</p>
+        <p id = "p3">Bye</p>
+    </div>
+
+    <p id = "p4"></p>
+
+    <script>
+    //     const p3 = document.getElementById("p3");
+    //     p3.addEventListener("click", function() {
+    //         alert("Has hecho clic en el p3");
+    // });
+
+    // const div = document.getElementById("div");
+    // div.addEventListener("click", function() {
+    //         alert("Has hecho clic en el div");
+    // });
+
+    const p4 = document.getElementById("p4");
+    const listaP = div.querySelectorAll("p");
+   
+   for (const key of listaP) {
+   
+        let text = key.innerHTML;
+        key.addEventListener("click", function() {
+            p4.innerHTML = text;
+
+        });
+        key.addEventListener("mouseenter", function() {
+            console.log("Entra en "+key.id);
+
+        });
+
+        key.addEventListener("mouseleave", function() {
+            console.log("Sale de "+key.id);
+
+        });
+        
+    };
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>

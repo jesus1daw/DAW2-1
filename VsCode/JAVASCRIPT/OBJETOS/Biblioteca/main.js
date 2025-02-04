@@ -66,8 +66,8 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
         console.log(arrayLectores);
         console.log(arrayLibros);
         
-        comprobarEmails();
-        comprobarTelefonos();
+        // comprobarEmails();
+        // comprobarTelefonos();
         // solicitudPrestamo();
         // solicitudPrestamo();
         // devolucionPrestamo();
@@ -140,6 +140,26 @@ arrayTotalPrestamos=[];
 arrayPrestamosVivos=[];
 numPrestamo=0;
 
+function validarEmail(email){
+    valido=false;
+    let validacion = /^[^\s@]+@[^\s@]+\.(com|net|eu|org)$/i;
+    if(validacion.test(email)){
+        valido=true;
+    }
+
+    return valido;
+}
+function validarTelefono(telefono){
+    valido=false;
+
+    let validacion = /^\d{9}$/; 
+    if(validacion.test(telefono)){
+        valido=true;
+    }
+
+    return valido;
+}
+
 //FUNCION altaLector() recibe los parametros con prompt, crea un objeto Lector y lo mete en el arrayLectores
 function altaLector(){
 
@@ -148,8 +168,24 @@ function altaLector(){
     let apellido=prompt("Introduce el apellido: ");
     let telefono=prompt("Introduce el telefono: ");
     let email=prompt("Introduce el email: ");
+
+    if(numSocio==null||nombre==null||apellido==null||telefono==null||email==null){
+        console.log("F, falta algún dato");
+    }else 
+
+    if(!validarEmail(email)){
+       console.log("V, el email tiene un formato incorrecto");
+    } else 
+
+    if(!validarTelefono(telefono)){
+       console.log("V, el telefono tiene un formato incorrecto");
+    } else{
+
+
     let lector=new Lector(numSocio,nombre,apellido,telefono,email,false,null);
     arrayLectores.push(lector);
+    console.log(numSocio);
+    }
 
 }
 
