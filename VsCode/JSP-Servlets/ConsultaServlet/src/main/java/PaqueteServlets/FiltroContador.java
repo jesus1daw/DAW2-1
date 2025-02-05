@@ -45,7 +45,7 @@ public class FiltroContador extends HttpFilter implements Filter {
 		}
 		intContador++;
 		miContexto.setAttribute("contador", intContador);
-		 System.out.println("📊 Contador actualizado: " + intContador);
+		 System.out.println("Contador actualizado: " + intContador);
 
 
 		chain.doFilter(request, response);

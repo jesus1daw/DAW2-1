@@ -46,12 +46,12 @@ public class ConsultaServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		
-		 // Obtener parámetros de inicialización específicos del servlet
+		 //Parámetros de inicialización específicos del servlet
 	    userName = config.getInitParameter("usuario");
 	    password = config.getInitParameter("password");
 	    url = config.getInitParameter("URLBaseDeDatos");
 
-	    // Obtener parámetros globales de la aplicación (contexto)
+	    //Parámetros globales de la aplicación (contexto)
 	    this.context = config.getServletContext();
 	    url2 = context.getInitParameter("URLBaseDeDatos");
 	    userName2 = context.getInitParameter("usuario");
@@ -69,11 +69,11 @@ public class ConsultaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if (this.context == null) {
-	        this.context = getServletContext();  // 👈 Si es null, obtén el contexto aquí
+	        this.context = getServletContext();  // Si es null, obtén el contexto aquí
 	    }
 		contador= (Integer)context.getAttribute("contador");
 		if (contador == null) {
-	        contador = 0;  // 👈 Si es null, inicializar en 0
+	        contador = 0;  // Si es null, inicializar en 0
 	    }
 		
 		PrintWriter out = response.getWriter();
