@@ -12,7 +12,7 @@ function mostrarContenido(contenido) {
     elemento.innerHTML = contenido;
 }
 
-document.getElementById('file-inputLector').addEventListener('change', async (e) => {
+document.getElementById('importar-input-libros').addEventListener('change', async (e) => {
     const archivo = e.target.files[0];
     if (!archivo) {
         return;
@@ -29,34 +29,34 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
 
     arraySin.forEach(lineaSin => {
         arrayLinea=lineaSin.split(",");
-        if(arrayLinea[0]!="numSocio"){
-            let lector=new Lector(arrayLinea[0],arrayLinea[1],arrayLinea[2],arrayLinea[3],arrayLinea[4],false,null);
-            arrayLectores.push(lector);
+        if(arrayLinea[0]!="codLibro"){
+            let libro=new Libro(arrayLinea[0],arrayLinea[1],arrayLinea[2],arrayLinea[3],arrayLinea[4],arrayLinea[5],false,null);
+            arrayLibros.push(libro);
         }
     });
 
-    document.getElementById('file-inputLibro').addEventListener('change', async (e) => {
-        const archivo = e.target.files[0];
-        if (!archivo) {
-            return;
-        }
-        const contenido = await leerArchivo(archivo);
-        // console.log(contenido);
-        // mostrarContenido(contenido);
-    
-        const lineas = contenido.split('\r\n');
-        sinDuplicados=new Set(lineas);
-        sinDuplicados.delete("");
-        arraySin=[...sinDuplicados];
-        console.log(sinDuplicados);
-    
-        arraySin.forEach(lineaSin => {
-            arrayLinea=lineaSin.split(",");
-            if(arrayLinea[0]!="codLibro"){
-                let libro=new Libro(arrayLinea[0],arrayLinea[1],arrayLinea[2],arrayLinea[3],arrayLinea[4],arrayLinea[5],false,null);
-                arrayLibros.push(libro);
+    document.getElementById('importar-input-lectores').addEventListener('change', async (e) => {
+       
+            const archivo = e.target.files[0];
+            if (!archivo) {
+                return;
             }
-    
+            const contenido = await leerArchivo(archivo);
+            // console.log(contenido);
+            // mostrarContenido(contenido);
+        
+            const lineas = contenido.split('\r\n');
+            sinDuplicados=new Set(lineas);
+            sinDuplicados.delete("");
+            arraySin=[...sinDuplicados];
+            console.log(sinDuplicados);
+        
+            arraySin.forEach(lineaSin => {
+                arrayLinea=lineaSin.split(",");
+                if(arrayLinea[0]!="numSocio"){
+                    let lector=new Lector(arrayLinea[0],arrayLinea[1],arrayLinea[2],arrayLinea[3],arrayLinea[4],false,null);
+                    arrayLectores.push(lector);
+                }
         });
 
 
@@ -83,7 +83,10 @@ document.getElementById('file-inputLector').addEventListener('change', async (e)
 }, false);
 
 
+function actualizarLibros(){
 
+    document.getElementById()
+}
 
 
 //CONSTRUCTOR de objetos Lector
@@ -198,10 +201,11 @@ function bajaLector(){
             lector.bajaLector=true;
             lector.fechaBaja=new Date().toLocaleDateString();
             error=false;
+            console.log("Fecha de baja: "+lector.fechaBaja);
         }
     });
     if(error==true){
-        console.log("El socio no existe");
+        console.log("E, el socio no existe");
     }
 }
 
@@ -213,6 +217,7 @@ function modifLector(){
         if(lector.numSocio==numSocio){
             atributo=prompt("Que dato desea modificar: ");
             valor=prompt("Que valor nuevo desea introducir: ");
+            
             lector[atributo]=valor;
             error=false;
         }
@@ -296,6 +301,7 @@ function bajaLibro(){
             libro.bajaLibro=true;
             libro.fechaBaja=new Date().toLocaleDateString();
             error=false;
+            console.log("El libro se ha dado de baja con exito");
         }
     });
     if(error==true){
@@ -326,7 +332,7 @@ function modifLibro(){
 function hayLibro(){
 
     error=true;
-    atributo=prompt("Indica si buscar por isbn, autor o titulo: ");
+    atributo=prompt("Indica si buscar por isbn o codLibro ");
     valor=prompt("Introduce el valor:");
     arrayLibros.forEach(libro => {
         if(libro[atributo]==valor){
@@ -406,6 +412,7 @@ function dondeLibro(){
 function solicitudPrestamo(){
     
     let numSocio=prompt("Introduce tu numero de socio para hacer un prestamo");
+    let codLibro=prompt("Introduce el codigo de libro que quieres ");
     
     let verifPrestamo=prestamoLibro();
     if(verifPrestamo[0]==false){
@@ -421,6 +428,8 @@ function solicitudPrestamo(){
 //
 function devolucionPrestamo(){
     error=true;
+    let numSocio=prompt("Introduce el numero de socio: ");
+    let codLibro=prompt("Introduce el codLibro")
     let numPrestamo=prompt("Introduce el numero de prestamo a devolver");
 
     arrayPrestamosVivos.forEach(prestamo =>{
