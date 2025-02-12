@@ -14,6 +14,12 @@ function mostrarContenido(contenido) {
 
 
     document.getElementById('importar-boton').addEventListener('click', async () => {
+
+
+        const mensaje = document.getElementById('prestamo-mensaje');
+        if (mensaje) mensaje.remove();
+
+
         const archivoLibros = document.getElementById('importar-input-libros').files[0];
         const archivoLectores = document.getElementById('importar-input-lectores').files[0];
     
@@ -263,7 +269,7 @@ document.getElementById('prestamo-boton').addEventListener('click', () => {
  
     // Añadir el mensaje a la sección correspondiente (debajo del botón)
     document.getElementById('prestamo-boton').appendChild(mensajeDiv);
-    actualizarTablaLibros();
+    
     
 });
 
@@ -277,9 +283,36 @@ document.getElementById('devolucion-boton').addEventListener('click', () => {
     const codLibro = document.getElementById('devolucion-prestamo-libro').value;
 
     if (numSocio && codLibro) {
-        devolucionPrestamo(numSocio,codLibro);
-        actualizarTablaLibros();  // Actualizar los libros después de una devolución
+        resultado=devolucionPrestamo(numSocio,codLibro);
+       
+        if(!resultado[0]){
+            texto="Solicitud realizada con exito: Numero de prestamo: "+resultado[1]+" Fecha devolucion: "+resultado[2];
+        }else{
+            texto="Solicitud erronea";
+        }
+
+    }else{
+        texto="Solicitud erronea"
     }
+    document.getElementById('devolucion-prestamo-socio').value = '';
+    document.getElementById('devolucion-prestamo-libro').value = '';
+
+
+
+    const mensajeDiv = document.createElement('p');
+    mensajeDiv.id = 'prestamo-mensaje';  // Asignar un ID para manejarlo más tarde
+
+    // Asignar el texto al párrafo
+    mensajeDiv.textContent = texto;
+
+    // Cambiar color según el tipo de mensaje
+   
+        mensajeDiv.style.color = 'red'; // Mensaje de error en rojo
+   
+    // Añadir el mensaje a la sección correspondiente (debajo del botón)
+    document.getElementById('devolucion-boton').appendChild(mensajeDiv);
+
+
 });
 
 
@@ -466,7 +499,6 @@ function modifLector(){
 function comprobarEmails() {
     
     let emailsInvalidos = [];
-
     arrayLectores.forEach(lector => {
         
         let validacion = /^[^\s@]+@[^\s@]+\.(com|net|eu|org)$/i;
@@ -508,8 +540,6 @@ function comprobarTelefonos(){
         } else {
             console.log("Todos los teléfonos son válidos.");
         }
-    
-    
 }
 
 function validarAutor(autor) {
@@ -647,7 +677,6 @@ function modifLibro(){
 function hayLibro(atributo,valor){
 
     error=true;
-    
     arrayLibros.forEach(libro => {
         if(libro[atributo]==valor && libro.bajaLibro==false){
             error=false;
@@ -661,9 +690,6 @@ function hayLibro(atributo,valor){
 
 //
 function prestamoLibro(codLibro,numSocio){
-    
-
-    
     
 //     if(validarCodLibro(codLibro) && !hayLibro("codLibro",codLibro)){
     
@@ -684,12 +710,10 @@ function prestamoLibro(codLibro,numSocio){
 
 // }
 
-
 if (!validarCodLibro(codLibro) || hayLibro("codLibro", codLibro)) {
     console.log("El libro no existe o está dado de baja.");
     return false; // No se puede realizar el préstamo
 }
-
 
 let lector = arrayLectores.find(lector => lector.numSocio === numSocio);
 let libro = arrayLibros.find(libro => libro.codLibro === codLibro);
@@ -701,29 +725,24 @@ if (lector && libro && libro.ejemplares > 0) {
     console.log("No hay ejemplares disponibles.");
     return false;
 }
-
-   
 }
 
 //
-function devolucionLibro(){
-    error=true;
-   
-    codLibro=prompt("Introduce el codigo de libro para devolver un prestamo: ");
+function devolucionLibro(codLibro){
+    
     if(validarCodLibro(codLibro)){
     arrayLibros.forEach(libro => {
         if(libro.codLibro==codLibro){
             
             libro.ejemplares=parseInt(libro.ejemplares)+1;
             console.log("Devuelto");
-            error=false;
+            return false;
         }
     });
 
     }else{
-        error=true
+        return true;
     }
-   return error;
 }
 
 //
@@ -738,7 +757,6 @@ function dondeLibro(){
             console.log("Pasillo: "+libro.pasillo+" Estanteria: "+libro.estanteria+" Estante: "+libro.estante);
             error=false;
         }
-
     });
     if(error==true){
         console.log("Libro no localizado")
@@ -747,8 +765,6 @@ function dondeLibro(){
 
 //
 function solicitudPrestamo(numSocio,codLibro){
-    
-    
     
     const exitoPrestamo = prestamoLibro(codLibro,numSocio);
     if (exitoPrestamo) {
@@ -761,25 +777,23 @@ function solicitudPrestamo(numSocio,codLibro){
     } else {
         console.log("No se pudo realizar el préstamo.");
         return false;
-    
 }
 }
 
 //
 function devolucionPrestamo(numSocio,codLibro){
     error=true;
-    
-   
-
+    num='';
+    fecha='';
     arrayPrestamosVivos.forEach(prestamo =>{
         if(prestamo.numSocio==numSocio && prestamo.codLibro==codLibro){
 
             prestamo.fechaDevolucion = new Date().toLocaleDateString();
-            aux=prestamo.numPrestamo;
+            num=prestamo.numPrestamo;
+            fecha=prestamo.fechaDevolucion
             devolucionLibro(prestamo.codLibro);
-            arrayPrestamosVivos = arrayPrestamosVivos.filter(prestamo => prestamo.numPrestamo != aux);
+            arrayPrestamosVivos = arrayPrestamosVivos.filter(prestamo => prestamo.numPrestamo != num);
             error=false;
-
         } 
     });
 
@@ -787,16 +801,15 @@ function devolucionPrestamo(numSocio,codLibro){
             console.log("Prestamo no encontrado ");
     }
 
+    return [error,num,fecha];
 }
 
 //
 function listadoTotalPrestamos(){
-
     console.log(arrayTotalPrestamos);
 }
 
 //
 function listadoPrestamosVivos(){
-
     console.log(arrayPrestamosVivos);
 }
