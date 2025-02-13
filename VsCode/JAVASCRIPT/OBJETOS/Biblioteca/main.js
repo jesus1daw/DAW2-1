@@ -16,7 +16,7 @@ function mostrarContenido(contenido) {
  document.getElementById('importar-boton').addEventListener('click', async () => {
     
     //Borramos el mensaje de error/exito si ya hay alguno escrito
-    const mensaje = document.getElementById('prestamo-mensaje');
+    const mensaje = document.getElementById('importar-mensaje');
     if (mensaje) mensaje.remove();
 
     //Recogemos los dos CSV
@@ -26,9 +26,9 @@ function mostrarContenido(contenido) {
     //Si uno esta vacio el mensaje es de Error
     if (!archivoLibros || !archivoLectores) {
         texto="Error: Selecciona ambos archivos antes de importar.";
-        return;
+        
 
-    //Sino leemos los dos CSV
+    //Si no leemos los dos CSV
     } else{
         const contenidoLibros = await leerArchivo(archivoLibros);
         const contenidoLectores = await leerArchivo(archivoLectores);
@@ -358,7 +358,7 @@ function Libro(codLibro,isbn,autor,titulo,editorial,ejemplares,bajaLibro,fechaBa
     this.bajaLibro=bajaLibro;
     this.fechaBaja=fechaBaja;
 
-};
+}
 
 //CONSTRUCTOR de objetos Prestamo
 function Prestamo(numPrestamo,numSocio,codLibro,fechaPrestamo,fechaDevolucion){
@@ -665,14 +665,14 @@ function altaLibro(isbn,autor,titulo,editorial,ejemplares){
 //FUNCIÓN para dar de baja un libro
 function bajaLibro(){
 
-    error=true; //Gestion de errores: 
+    error=true; //Gestion de errores:  Si el libro no existe (true) || Si el libro no cumple la validacion (false)
     codLibro=prompt("Introduce el codigo del libro a dar de baja"); //Solicitamos el codigo del Libro
 
     //Si el formato es valido...
     if(validarCodLibro(codLibro)){
         //Recorremos el array de Libros
     arrayLibros.forEach(libro => {
-        //Si se encuentra relación entre el codigo del lector y el codigo solicitado...
+        //Si se encuentra relación entre el codigo del Libro y el codigo solicitado...
         if(libro.codLibro==codLibro){
             libro.bajaLibro=true; //Se da de baja.
             libro.fechaBaja=new Date().toLocaleDateString(); //Se asigna una fecha de baja
@@ -682,210 +682,222 @@ function bajaLibro(){
     });
     //Si el formato es invalido, mostramos mensaje de error
     }else{
-        console.log("El codLibro no cumple con la validación")
+        console.log("El codLibro no cumple con la validación");
+        error=false;
     }
+    //Si el libro no existe
     if(error==true){
         console.log("El libro no existe");
     }
 }
 
 
-//
+//FUNCION para modificar el valor de un atributo de Libro
 function modifLibro(){
 
-    error=true;
-    codLibro=prompt("Introduce el codigo del libro para modificar");
+    error=true; //Gestión de errores: Si no existe el Libro (true) || Si el formato es valido pero no se encuentra relacion (false)
+    codLibro=prompt("Introduce el codigo del libro para modificar"); //Solicitamos el codigo del libro 
+
+    //Si el codigo cumple la validación...
     if(validarCodLibro(codLibro)){
+        //Recorremos el array de Libros
+    arrayLibros.forEach(libro => {
 
-        arrayLibros.forEach(libro => {
+        //Si se encuentra relación entre el codigo del Libro y el codigo solicitado...
+        if(libro.codLibro==codLibro){
 
-            if(libro.codLibro==codLibro){
+            atributo=prompt("Que dato desea modificar: "); //Solicitamos el atributo
+            valor=prompt("Que valor nuevo desea introducir: "); //Solicitamos el valor nuevo
 
-                atributo=prompt("Que dato desea modificar: ");
-                valor=prompt("Que valor nuevo desea introducir: ");
+                //Si el atributo es "isbn" y el valor cumple con la validacion
+                if(atributo=="isbn" && validarIsbn(valor)) { 
 
-                if(atributo=="isbn" && validarIsbn(valor)) {
-
-                    libro[atributo]=valor;
-                    error=false;
-
-                    }else if(atributo=="autor" && validarAutor(valor)) {
+                    libro[atributo]=valor; //Asignamos nuevo valor
+                    
+                //Si el atributo es "autor" y el valor cumple con la validacion
+                }else if(atributo=="autor" && validarAutor(valor)) { 
     
-                        libro[atributo]=valor;
-                        error=false;
-
-                        }else if(atributo=="titulo" && validarTitulo(valor)) {
+                    libro[atributo]=valor; //Asignamos nuevo valor
+                    
+                //Si el atributo es "autor" y el valor cumple con la validacion
+                }else if(atributo=="titulo" && validarTitulo(valor)) { 
     
-                            libro[atributo]=valor;
-                            error=false;
-
-                            }else if(atributo=="editorial" && validarEditorial(valor)) {
+                    libro[atributo]=valor; //Asignamos nuevo valor
+                    
+                //Si el atributo es "autor" y el valor cumple con la validacion
+                }else if(atributo=="editorial" && validarEditorial(valor)) { 
     
-                                libro[atributo]=valor;
-                                error=false;
-
-                                }else if(atributo==ejemplares && validarEjemplares(valor)){
+                    libro[atributo]=valor; //Asignamos nuevo valor
+                
+                //Si el atributo es "autor" y el valor cumple con la validacion
+                }else if(atributo=="ejemplares" && validarEjemplares(valor)){ 
                                 
-                                    libro[atributo]=valor;
-                                    error=false;
+                    libro[atributo]=valor; //Asignamos nuevo valor
 
-                                    }else{
-                                        console.log("El valor del "+atributo+" no cumple la validación")
-                                    }
+                //Si es otro atributo o no cumple la validacion mostramos mensaje de error
+                }else{  
+                    console.log("El valor del "+atributo+" no cumple la validación");
+                    error=false;
+                }
             }
         });
-
+        //Si el codigo de libro no cumple la validacion muestra mensaje de error
     }else{
-        console.log("El codLibro no cumple con la validación")
+        console.log("El codLibro no cumple con la validación");
+        error=false;
     }
+        //Si el fomato es valido pero no se encuentra la relacion con un Libro
     if(error==true){
         console.log("El libro no existe");
     }
 }
 
 
-//
+//FUNCION que busca por isbn o codLibro si esta disponible o esta dado de baja
 function hayLibro(atributo,valor){
 
-    error=true;
+    error=true; //Gestion de errores: Si no hay relacion o el libro esta dado de baja (true) || Si hay relacion y el libro esta de alta (false)
+    
+    //Recorremos el array de Libros
     arrayLibros.forEach(libro => {
+
+        //Si se encentra relacion y el libro no esta de baja
         if(libro[atributo]==valor && libro.bajaLibro==false){
             error=false;
         }
     });
 
+    //Devuelve la variable "error"
     return error;
 }
 
 
-//
+//FUNCION para realizar un prestamo de un Libro
 function prestamoLibro(codLibro,numSocio){
-    
-//     if(validarCodLibro(codLibro) && !hayLibro("codLibro",codLibro)){
-    
-//     arrayLibros.forEach(libro => {
-//         if(libro.codLibro==codLibro && libro.ejemplares>=1){
-            
-//             libro.ejemplares=parseInt(libro.ejemplares)-1;
-//             console.log("Prestado");
-//             error=false;
-//         }
-//         else{
-//             error=true;
-//         }
-//     });
 
-//  }else{
-//    error=true;
-
-// }
-
+    //Si el codigo de libro no es valido o no existe
     if (!validarCodLibro(codLibro) || hayLibro("codLibro", codLibro)) {
         console.log("El libro no existe o está dado de baja.");
         return false; // No se puede realizar el préstamo
     }
-
+    
+    //Buscamos las relaciones
     let lector = arrayLectores.find(lector => lector.numSocio === numSocio);
     let libro = arrayLibros.find(libro => libro.codLibro === codLibro);
 
+    //Si hay relaciones y hay mas de 0 ejemplares del libro
     if (lector && libro && libro.ejemplares > 0) {
 
-        libro.ejemplares = libro.ejemplares - 1;
+        libro.ejemplares = libro.ejemplares - 1; //Se resta un ejemplar
         console.log("Libro prestado con éxito.");
-        return true;
+        return true; //Se puede realizar el prestamo
 
     } else {
     console.log("No hay ejemplares disponibles.");
-    return false;
+    return false; //No se puede realizar el prestamo 
 }
 }
 
 
-//
+//FUNCION para devolver un libro
 function devolucionLibro(codLibro){
     
+    //Si el codigo de libro es valido
     if(validarCodLibro(codLibro)){
+        //Recorremos el array de libros
         arrayLibros.forEach(libro => {
+        //Si encontramos una relacion
         if(libro.codLibro==codLibro){
             
-            libro.ejemplares=parseInt(libro.ejemplares)+1;
+            libro.ejemplares=parseInt(libro.ejemplares)+1; //Añadimos un ejemplar
             console.log("Devuelto");
-            return false;
+            return false; //Devolucion exitosa
         }
         });
 
     }else{
-        return true;
+        return true; //Devolucion erronea
     }
 }
 
 
-//
+//FUNCION para encontrar donde se situa un libro
 function dondeLibro(){
 
-    error=true;
-    let isbn=prompt("Introduce el isbm del libro para localizar");
+    error=true;//Gestion de errores: Si el libro no es localizado (true) || Si el libro es localizado (false)
+    let isbn=prompt("Introduce el isbn del libro para localizar"); //Solicitamos el isbn del libro
 
+    //Recorremos el array de libross
     arrayLibros.forEach(libro =>{
+        //Si hay relacion en los isbn
         if(libro.isbn==isbn){
 
-            libro.__proto__=clasificacion;
-            console.log("Pasillo: "+libro.pasillo+" Estanteria: "+libro.estanteria+" Estante: "+libro.estante);
+            libro.__proto__=clasificacion;//Prototipamos el libro con la clasificacion (todos estan en la misma clasificacion)
+            console.log("Pasillo: "+libro.pasillo+" Estanteria: "+libro.estanteria+" Estante: "+libro.estante); //Mostramos la informacion
             error=false;
         }
     });
+    //Si no se localiza el libro 
     if(error==true){
         console.log("Libro no localizado")
     }
 }
 
-//
+//FUNCION para solicitar un prestamo
 function solicitudPrestamo(numSocio,codLibro){
     
-    const exitoPrestamo = prestamoLibro(codLibro,numSocio);
+    const exitoPrestamo = prestamoLibro(codLibro,numSocio);//LLamamos a la funcion prestamoLibro()
+
+    //Si prestamoLibro() devuelve "true"
     if (exitoPrestamo) {
-        let numPrestamo = arrayTotalPrestamos.length + 1; // Número de préstamo
-        let prestamo = new Prestamo(numPrestamo, numSocio, codLibro, new Date().toLocaleDateString(), null);
-        arrayTotalPrestamos.push(prestamo);
-        arrayPrestamosVivos.push(prestamo);
-        console.log(`Préstamo realizado: ${numPrestamo} para el socio ${numSocio}`);
-        return true;
+        let numPrestamo = arrayTotalPrestamos.length + 1; //Asignamos un numero de prestamo que autoincrementa
+        let prestamo = new Prestamo(numPrestamo, numSocio, codLibro, new Date().toLocaleDateString(), null); //Creamos el objeto Prestamo
+        arrayTotalPrestamos.push(prestamo); //Lo añadimos a la lista de prestamos totales
+        arrayPrestamosVivos.push(prestamo); //Lo añadimos a la lista de prestamos vivos
+        console.log(`Préstamo realizado: ${numPrestamo} para el socio ${numSocio}`); //Mostramos la info
+        return true; //Devolvemos true
+
+    //Si prestamoLibro() devuelve false
     }else{
         console.log("No se pudo realizar el préstamo.");
-        return false;
+        return false; //Devolvemos false
 }
 }
 
-//
+//FUNCION para devolver un prestamo
 function devolucionPrestamo(numSocio,codLibro){
-    error=true;
+    error=true; //Gestion errores: Si el prestamo no se encuentra (true) || Si la devolucion es exitosa (false)
     num='';
     fecha='';
+
+    //Recorremos el array de prestamos vivos
     for (const prestamo of arrayPrestamosVivos) {
+        //Si encontramos relacion
         if(prestamo.numSocio==numSocio && prestamo.codLibro==codLibro){
 
-            prestamo.fechaDevolucion = new Date().toLocaleDateString();
-            num=prestamo.numPrestamo;
-            fecha=prestamo.fechaDevolucion
-            devolucionLibro(prestamo.codLibro);
-            arrayPrestamosVivos = arrayPrestamosVivos.filter(prestamo => prestamo.numPrestamo != num);
+            prestamo.fechaDevolucion = new Date().toLocaleDateString(); //Asignamos fecha de devolucion
+            num=prestamo.numPrestamo; //Recogemos el numero de prestamo
+            fecha=prestamo.fechaDevolucion //Recogemos la fecha de devolucion
+            devolucionLibro(prestamo.codLibro); //LLamamos a devolucionLibro para devolverlo
+            arrayPrestamosVivos = arrayPrestamosVivos.filter(prestamo => prestamo.numPrestamo != num); //Filtramos el array de prestamos vivos para que se borre el que acabamos de devolver
             error=false;
-            break;
+            break; //Salimos del bucle para no borrar todos en caso de que la misma persona haya prestado dos libros iguales
         } 
     };
-
+    //Si no hay relacion, error
     if(error==true){
         console.log("Prestamo no encontrado ");
     }
-    return [error,num,fecha];
+
+    return [error,num,fecha]; //Devolvemos el error (true/false), el numero de prestamo y la fecha de devolucion
 }
 
-//
+//FUNCION que muestra el listado total de prestamos
 function listadoTotalPrestamos(){
     console.log(arrayTotalPrestamos);
 }
 
-//
+//FUNCION que muestra el listado de los prestamos vivos
 function listadoPrestamosVivos(){
     console.log(arrayPrestamosVivos);
 }
