@@ -626,11 +626,11 @@ function altaLibro(isbn,autor,titulo,editorial,ejemplares){
 
     error=true;
 
-    //Si 
+    //Si ninguno de los parametros es null mostramos el error
     if(isbn==null||autor==null||titulo==null||editorial==null||ejemplares==null){
         console.log("F, falta algún dato");
     }else 
-
+        //Si alguno no es valido muestra el mensaje de error pertinente
     if(!validarIsbn(isbn)){
         console.log("V, el isbn tiene un formato incorrecto")
     }else
@@ -651,31 +651,36 @@ function altaLibro(isbn,autor,titulo,editorial,ejemplares){
         console.log("V, los ejemplares tiene un formato incorrecto");
     }else{
     
+    //Si todos son validos crea el objeto Lector y lo añade al arrayLectores
     error=false;
     codLibro = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
     let libro=new Libro(codLibro,isbn,autor,titulo,editorial,ejemplares,false,null);
     arrayLibros.push(libro);
     console.log("Añadido con exito");
 }
-    return error;
+    return error; //Devolvemos error: (true) si se a realizado con exito || (false) Si hay algún error
 };
 
 
-//
+//FUNCIÓN para dar de baja un libro
 function bajaLibro(){
 
-    error=true;
-    codLibro=prompt("Introduce el codigo del libro a dar de baja");
+    error=true; //Gestion de errores: 
+    codLibro=prompt("Introduce el codigo del libro a dar de baja"); //Solicitamos el codigo del Libro
+
+    //Si el formato es valido...
     if(validarCodLibro(codLibro)){
+        //Recorremos el array de Libros
     arrayLibros.forEach(libro => {
+        //Si se encuentra relación entre el codigo del lector y el codigo solicitado...
         if(libro.codLibro==codLibro){
-            libro.bajaLibro=true;
-            libro.fechaBaja=new Date().toLocaleDateString();
+            libro.bajaLibro=true; //Se da de baja
+            libro.fechaBaja=new Date().toLocaleDateString(); //Se asigna una fecha de baja
             error=false;
             console.log("El libro se ha dado de baja con exito");
         }
     });
-
+    //Si el formato es invalido, mostramos mensaje de error
     }else{
         console.log("El codLibro no cumple con la validación")
     }
