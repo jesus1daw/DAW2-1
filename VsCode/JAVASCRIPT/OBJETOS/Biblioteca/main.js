@@ -625,7 +625,9 @@ function validarCodLibro(codLibro){
 function altaLibro(isbn,autor,titulo,editorial,ejemplares){
 
     error=true;
-    if(isbn==''||autor==''||titulo==''||editorial==''||ejemplares==''){
+
+    //Si 
+    if(isbn==null||autor==null||titulo==null||editorial==null||ejemplares==null){
         console.log("F, falta algún dato");
     }else 
 
