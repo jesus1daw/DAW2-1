@@ -674,7 +674,7 @@ function bajaLibro(){
     arrayLibros.forEach(libro => {
         //Si se encuentra relación entre el codigo del lector y el codigo solicitado...
         if(libro.codLibro==codLibro){
-            libro.bajaLibro=true; //Se da de baja
+            libro.bajaLibro=true; //Se da de baja.
             libro.fechaBaja=new Date().toLocaleDateString(); //Se asigna una fecha de baja
             error=false;
             console.log("El libro se ha dado de baja con exito");
