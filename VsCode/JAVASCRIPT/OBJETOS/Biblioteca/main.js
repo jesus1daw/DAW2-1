@@ -28,7 +28,7 @@ function mostrarContenido(contenido) {
         texto="Error: Selecciona ambos archivos antes de importar.";
         
 
-    //Si no leemos los dos CSV
+    //Sino leemos los dos CSV
     } else{
         const contenidoLibros = await leerArchivo(archivoLibros);
         const contenidoLectores = await leerArchivo(archivoLectores);
