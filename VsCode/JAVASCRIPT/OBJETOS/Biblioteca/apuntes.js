@@ -651,3 +651,40 @@ Promise.all([promesa1, promesa2]).then(resultados => {
 
 
 //-------------------------------------------------------------------
+function procesarArchivo(contenidoArchivo) {
+    // Dividimos el archivo en secciones separadas por "&&&&&;;;;;"
+    const secciones = contenidoArchivo.split("&&&&&;;;;;");
+
+    // Procesamos cada sección
+    const clientesDirecciones = procesarClientesDirecciones(secciones[0]);
+    const clientesTelefonos = procesarClientesTelefonos(secciones[1]);
+    const comprasClientes = procesarComprasClientes(secciones[2]);
+
+    console.log("Clientes y Direcciones:", clientesDirecciones);
+    console.log("Clientes y Teléfonos:", clientesTelefonos);
+    console.log("Compras de Clientes:", comprasClientes);
+
+    return {
+        clientesDirecciones,
+        clientesTelefonos,
+        comprasClientes
+    };
+}
+
+
+function procesarClientesDirecciones(texto) {
+    let lineas = texto.trim().split("\n");
+    let clientes = [];
+
+    lineas.forEach(linea => {
+        let datos = linea.split(" – ");
+        if (datos.length === 2) {
+            let nombreApellido = datos[0].trim().split(" "); // Separamos el nombre y apellido
+            let nombre = nombreApellido.slice(0, -1).join(" "); // El nombre es todo excepto el último elemento
+            let apellido = nombreApellido.slice(-1).join(" "); // El apellido es el último elemento
+            clientes.push([nombre, apellido, datos[1].trim()]); // Usamos un array simple con nombre, apellido y dirección
+        }
+    });
+
+    return clientes;
+}
