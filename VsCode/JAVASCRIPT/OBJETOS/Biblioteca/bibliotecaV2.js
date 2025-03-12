@@ -37,7 +37,7 @@ function mostrarContenido(contenido) {
     //Si uno esta vacio el mensaje es de Error
     if (!archivoLibros || !archivoLectores) {
         texto="Error: Selecciona ambos archivos antes de importar.";
-        
+        color="red";
 
     //Si no leemos los dos CSV
     } else{
@@ -78,6 +78,7 @@ function mostrarContenido(contenido) {
                 arrayLectores.push(lector); //Los metemos en el array de Lectores
             }
         });
+        color="green";
     }
     
     //Creamos un elemento <p>
@@ -88,7 +89,7 @@ function mostrarContenido(contenido) {
     mensajeDiv.textContent = texto;
     
     //Mensaje en rojo
-    mensajeDiv.style.color = 'red'; 
+    mensajeDiv.style.color = color;
      
     //Añadimos el mensaje debajo del boton
     document.getElementById('importar-boton').appendChild(mensajeDiv);
